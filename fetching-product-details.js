@@ -31,15 +31,15 @@ function extractIdFromUrl(url) {
 }
 
 async function fetchProductDetails(url) {
-    const path = extractPathFromUrl(url);
-    const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-Ul6cEKgurZa8/en-US/${path}.json`;
+    const productPath = extractPathFromUrl(url);
+    const resourceId = 'NNM9SqzQRD--'
+    const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}.json`;
     const response = await fetch(api, {
         headers
     });
     const jsonObject = await response.json();
     const id = extractIdFromUrl(url);
     fs.writeFileSync(`product-details-${id}.json`, JSON.stringify(jsonObject, null, 2));
-
 }
 
-await fetchProductDetails("https://www.chewy.com/meow-mix-seafood-medley-dry-cat-food/dp/127505")
+await fetchProductDetails("https://www.chewy.com/greenies-teenie-dental-dog-treats/dp/35512")

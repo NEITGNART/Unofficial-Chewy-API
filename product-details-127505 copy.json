@@ -5,14 +5,14 @@
     "environment": "prd",
     "isInNetwork": false,
     "isMobileApp": false,
-    "region": "us-east-1",
-    "requestId": "7054961,6614DDD2-33EA43A3,UI-PDP-YYR1DTsKRle_pioAW0wyaA",
-    "shortRegion": "use1",
+    "region": "us-east-2",
+    "requestId": "1ca03d8f,6613C94B-38B5CED8,UI-PDP-LlFZr6-kSF-wRFDwyBTrow",
+    "shortRegion": "use2",
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:124.0) Gecko/20100101 Firefox/124.0",
-    "version": "2.349.0",
+    "version": "2.348.0",
     "pageData": {
-      "app_version": "SPA-2.349.0",
-      "awsRegion": "us-east-1",
+      "app_version": "SPA-2.348.0",
+      "awsRegion": "us-east-2",
       "siteId": "0",
       "subSiteId": "0",
       "ecomm_pagetype": "product",
@@ -42,7 +42,6 @@
         "entryID": "127504",
         "partNumber": "99963",
         "name": "Meow Mix Original Choice Dry Cat Food",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
         "manufacturerName": "Meow Mix",
         "items({\"includeEnsemble\":true})": [
           {
@@ -74,42 +73,42 @@
           }
         ],
         "slug": "meow-mix-original-choice-dry-cat-food",
-        "rating": 4.6132,
-        "ratingCount": 2283,
+        "rating": 4.6129,
+        "ratingCount": 2281,
         "ratingDistributions": [
           {
             "__typename": "RatingDistribution",
             "rating": 1,
             "ratingCount": 106,
-            "ratingPercent": 4.643
+            "ratingPercent": 4.6471
           },
           {
             "__typename": "RatingDistribution",
             "rating": 2,
             "ratingCount": 37,
-            "ratingPercent": 1.6207
+            "ratingPercent": 1.6221
           },
           {
             "__typename": "RatingDistribution",
             "rating": 3,
             "ratingCount": 79,
-            "ratingPercent": 3.4604
+            "ratingPercent": 3.4634
           },
           {
             "__typename": "RatingDistribution",
             "rating": 4,
             "ratingCount": 190,
-            "ratingPercent": 8.3224
+            "ratingPercent": 8.3297
           },
           {
             "__typename": "RatingDistribution",
             "rating": 5,
-            "ratingCount": 1871,
-            "ratingPercent": 81.9536
+            "ratingCount": 1869,
+            "ratingPercent": 81.9377
           }
         ],
-        "recommendedRatingCount": 2092,
-        "recommendedRatingPercent": 91.63381515549716,
+        "recommendedRatingCount": 2091,
+        "recommendedRatingPercent": 91.67032003507234,
         "breadcrumbs": [
           {
             "__ref": "Breadcrumb:325"
@@ -162,69 +161,16 @@
           }
         ]
       },
-      "Attribute:777": {
-        "__typename": "Attribute",
-        "id": 777,
-        "name": "Flavor",
-        "values": [
-          {
-            "__ref": "AttributeValue:{\"id\":null,\"value\":\"Original Choice\"}"
-          }
-        ]
-      },
-      "AttributeValue:{\"id\":null,\"value\":\"Original Choice\"}": {
-        "__typename": "AttributeValue",
-        "id": null,
-        "value": "Original Choice",
-        "attribute": {
-          "__ref": "Attribute:777"
-        }
-      },
-      "Attribute:400": {
-        "__typename": "Attribute",
-        "id": 400,
-        "name": "Size",
-        "values": [
-          {
-            "__ref": "AttributeValue:{\"id\":13097350,\"value\":\"18-oz pouch\"}"
-          },
-          {
-            "__ref": "AttributeValue:{\"id\":40646,\"value\":\"3.15-lb bag\"}"
-          },
-          {
-            "__ref": "AttributeValue:{\"id\":40640,\"value\":\"6.3-lb bag\"}"
-          },
-          {
-            "__ref": "AttributeValue:{\"id\":66258,\"value\":\"16-lb bag\"}"
-          },
-          {
-            "__ref": "AttributeValue:{\"id\":10103974,\"value\":\"22-lb bag\"}"
-          },
-          {
-            "__ref": "AttributeValue:{\"id\":280062,\"value\":\"30-lb bag\"}"
-          }
-        ]
-      },
-      "AttributeValue:{\"id\":10103974,\"value\":\"22-lb bag\"}": {
-        "__typename": "AttributeValue",
-        "id": 10103974,
-        "value": "22-lb bag",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMjc1MDg=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MDg=",
-        "name": "Meow Mix Original Choice Dry Cat Food, 22-lb bag",
         "advertisedPrice": "$22.99",
-        "gtin": "829274520348",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
-        "inStock": true,
+        "name": "Meow Mix Original Choice Dry Cat Food, 22-lb bag",
         "partNumber": "99967",
         "entryID": "127508",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$1.05",
@@ -243,26 +189,16 @@
           "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/99967_MAIN._AC_SX275_V1670620206_.jpg"
         }
       },
-      "AttributeValue:{\"id\":13097350,\"value\":\"18-oz pouch\"}": {
-        "__typename": "AttributeValue",
-        "id": 13097350,
-        "value": "18-oz pouch",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMDIwMTM0": {
         "__typename": "Item",
         "id": "SXRlbToxMDIwMTM0",
-        "name": "Meow Mix Original Choice Dry Cat Food, 18-oz pouch",
         "advertisedPrice": "$4.32",
-        "gtin": "829274454186",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
-        "inStock": true,
+        "name": "Meow Mix Original Choice Dry Cat Food, 18-oz pouch",
         "partNumber": "1020134",
         "entryID": "1020134",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$0.24",
@@ -281,26 +217,16 @@
           "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/1020134_MAIN._AC_SX275_V1700845611_.jpg"
         }
       },
-      "AttributeValue:{\"id\":40640,\"value\":\"6.3-lb bag\"}": {
-        "__typename": "AttributeValue",
-        "id": 40640,
-        "value": "6.3-lb bag",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMjc1MDY=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MDY=",
-        "name": "Meow Mix Original Choice Dry Cat Food, 6.3-lb bag",
         "advertisedPrice": "$8.99",
-        "gtin": "829274513760",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
-        "inStock": true,
+        "name": "Meow Mix Original Choice Dry Cat Food, 6.3-lb bag",
         "partNumber": "99965",
         "entryID": "127506",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$1.43",
@@ -319,26 +245,16 @@
           "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/99965_MAIN._AC_SX275_V1661377312_.jpg"
         }
       },
-      "AttributeValue:{\"id\":66258,\"value\":\"16-lb bag\"}": {
-        "__typename": "AttributeValue",
-        "id": 66258,
-        "value": "16-lb bag",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMjc1MDc=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MDc=",
-        "name": "Meow Mix Original Choice Dry Cat Food, 16-lb bag",
         "advertisedPrice": "$16.09",
-        "gtin": "829274502252",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
-        "inStock": true,
+        "name": "Meow Mix Original Choice Dry Cat Food, 16-lb bag",
         "partNumber": "99966",
         "entryID": "127507",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$1.01",
@@ -357,26 +273,16 @@
           "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/99966_MAIN._AC_SX275_V1661377555_.jpg"
         }
       },
-      "AttributeValue:{\"id\":40646,\"value\":\"3.15-lb bag\"}": {
-        "__typename": "AttributeValue",
-        "id": 40646,
-        "value": "3.15-lb bag",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMjc1MDU=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MDU=",
-        "name": "Meow Mix Original Choice Dry Cat Food, 3.15-lb bag",
         "advertisedPrice": "$5.72",
-        "gtin": "829274513753",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
-        "inStock": true,
+        "name": "Meow Mix Original Choice Dry Cat Food, 3.15-lb bag",
         "partNumber": "99964",
         "entryID": "127505",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$1.82",
@@ -397,12 +303,13 @@
         "product": {
           "__ref": "Product:UHJvZHVjdDoxMjc1MDQ="
         },
+        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
         "onSpecial": false,
+        "gtin": "829274513753",
         "isHealthCare": false,
         "reviewsDisclaimer": {
           "showDisclaimer": false
         },
-        "isProductSchemaVariant": false,
         "images": [
           {
             "__typename": "Image",
@@ -659,26 +566,16 @@
         "defaultPrescribedItem": null,
         "targetedPromotions": []
       },
-      "AttributeValue:{\"id\":280062,\"value\":\"30-lb bag\"}": {
-        "__typename": "AttributeValue",
-        "id": 280062,
-        "value": "30-lb bag",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMDMyODU0": {
         "__typename": "Item",
         "id": "SXRlbToxMDMyODU0",
-        "name": "Meow Mix Original Choice Dry Cat Food, 30-lb bag",
         "advertisedPrice": "$28.48",
-        "gtin": "829274520997",
-        "description": "Meow Mix Original Choice Dry Cat Food is packed full of tasty chicken, turkey, salmon, and ocean fish flavors, so it’s su-purr delicious! It’s formulated to help your adult furbaby stay healthy and happy. It delivers all the essential nutrients your kitty needs, including high-quality protein and essential fatty acids to support strong muscles and coat health. It’s also packed with wholesome ingredients. This food delivers complete and balanced nutrition to help keep your best friend feeling paw-some through adulthood.",
-        "inStock": true,
+        "name": "Meow Mix Original Choice Dry Cat Food, 30-lb bag",
         "partNumber": "1032854",
         "entryID": "1032854",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$0.95",
@@ -697,26 +594,16 @@
           "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/1032854_MAIN._AC_SX275_V1703194504_.jpg"
         }
       },
-      "AttributeValue:{\"id\":null,\"value\":\"Seafood Medley\"}": {
-        "__typename": "AttributeValue",
-        "id": null,
-        "value": "Seafood Medley",
-        "attribute": {
-          "__ref": "Attribute:777"
-        }
-      },
       "Item:SXRlbToxMjc1MTA=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MTA=",
-        "name": "Meow Mix Seafood Medley Dry Cat Food, 3.15-lb bag",
         "advertisedPrice": "$7.12",
-        "gtin": "829274512329",
-        "description": "Meow Mix Seafood Medley Dry Cat Food is a seafood dinner that’s specially formulated to help adult cats stay healthy and happy. To maintain wellness throughout adulthood, fully grown cats need the proper nutrition to keep them in top shape as they age. Meow Mix Seafood Medley provides all the essential nutrients they need, including high-quality protein to help support strong muscles and omega-3 and omega-6 fatty acids to nourish their skin and keep their coat looking its best. It’s packed with tons of wholesome ingredients and the irresistible flavors of tuna, shrimp, crab and trout. This tasty food is complete and balanced for adult cats with all the vitamins and minerals they need for optimal health.",
-        "inStock": true,
+        "name": "Meow Mix Seafood Medley Dry Cat Food, 3.15-lb bag",
         "partNumber": "99969",
         "entryID": "127510",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$2.27",
@@ -738,15 +625,13 @@
       "Item:SXRlbToxMjc1MTE=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MTE=",
-        "name": "Meow Mix Seafood Medley Dry Cat Food, 6.3-lb bag",
         "advertisedPrice": "$9.62",
-        "gtin": "829274512336",
-        "description": "Meow Mix Seafood Medley Dry Cat Food is a seafood dinner that’s specially formulated to help adult cats stay healthy and happy. To maintain wellness throughout adulthood, fully grown cats need the proper nutrition to keep them in top shape as they age. Meow Mix Seafood Medley provides all the essential nutrients they need, including high-quality protein to help support strong muscles and omega-3 and omega-6 fatty acids to nourish their skin and keep their coat looking its best. It’s packed with tons of wholesome ingredients and the irresistible flavors of tuna, shrimp, crab and trout. This tasty food is complete and balanced for adult cats with all the vitamins and minerals they need for optimal health.",
-        "inStock": false,
+        "name": "Meow Mix Seafood Medley Dry Cat Food, 6.3-lb bag",
         "partNumber": "99970",
         "entryID": "127511",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": false,
         "isPublished": false,
         "isUnavailable": true,
         "perUnitPrice": null,
@@ -765,26 +650,16 @@
           "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/catalog/99970_MAIN._AC_SX275_V1462999363_.jpg"
         }
       },
-      "AttributeValue:{\"id\":69740,\"value\":\"14.2-lb bag\"}": {
-        "__typename": "AttributeValue",
-        "id": 69740,
-        "value": "14.2-lb bag",
-        "attribute": {
-          "__ref": "Attribute:400"
-        }
-      },
       "Item:SXRlbToxMjc1MTI=": {
         "__typename": "Item",
         "id": "SXRlbToxMjc1MTI=",
-        "name": "Meow Mix Seafood Medley Dry Cat Food, 14.2-lb bag",
         "advertisedPrice": "$16.98",
-        "gtin": "829274502290",
-        "description": "Meow Mix Seafood Medley Dry Cat Food is a seafood dinner that’s specially formulated to help adult cats stay healthy and happy. To maintain wellness throughout adulthood, fully grown cats need the proper nutrition to keep them in top shape as they age. Meow Mix Seafood Medley provides all the essential nutrients they need, including high-quality protein to help support strong muscles and omega-3 and omega-6 fatty acids to nourish their skin and keep their coat looking its best. It’s packed with tons of wholesome ingredients and the irresistible flavors of tuna, shrimp, crab and trout. This tasty food is complete and balanced for adult cats with all the vitamins and minerals they need for optimal health.",
-        "inStock": true,
+        "name": "Meow Mix Seafood Medley Dry Cat Food, 14.2-lb bag",
         "partNumber": "99971",
         "entryID": "127512",
         "isGiftCard": false,
         "isPrescription": false,
+        "inStock": true,
         "isPublished": true,
         "isUnavailable": false,
         "perUnitPrice": "$1.20",
@@ -845,9 +720,116 @@
         "promoHeadlineLong": null,
         "promoHeadlineShort": null
       },
+      "AttributeValue:{\"id\":null,\"value\":\"Original Choice\"}": {
+        "__typename": "AttributeValue",
+        "id": null,
+        "value": "Original Choice",
+        "attribute": {
+          "__ref": "Attribute:777"
+        }
+      },
+      "AttributeValue:{\"id\":40646,\"value\":\"3.15-lb bag\"}": {
+        "__typename": "AttributeValue",
+        "id": 40646,
+        "value": "3.15-lb bag",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
       "Promotion:132": {
         "__typename": "Promotion",
         "id": 132
+      },
+      "Attribute:777": {
+        "__typename": "Attribute",
+        "id": 777,
+        "name": "Flavor",
+        "values": [
+          {
+            "__ref": "AttributeValue:{\"id\":null,\"value\":\"Original Choice\"}"
+          }
+        ]
+      },
+      "Attribute:400": {
+        "__typename": "Attribute",
+        "id": 400,
+        "name": "Size",
+        "values": [
+          {
+            "__ref": "AttributeValue:{\"id\":13097350,\"value\":\"18-oz pouch\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":40646,\"value\":\"3.15-lb bag\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":40640,\"value\":\"6.3-lb bag\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":66258,\"value\":\"16-lb bag\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":10103974,\"value\":\"22-lb bag\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":280062,\"value\":\"30-lb bag\"}"
+          }
+        ]
+      },
+      "AttributeValue:{\"id\":10103974,\"value\":\"22-lb bag\"}": {
+        "__typename": "AttributeValue",
+        "id": 10103974,
+        "value": "22-lb bag",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "AttributeValue:{\"id\":13097350,\"value\":\"18-oz pouch\"}": {
+        "__typename": "AttributeValue",
+        "id": 13097350,
+        "value": "18-oz pouch",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "AttributeValue:{\"id\":40640,\"value\":\"6.3-lb bag\"}": {
+        "__typename": "AttributeValue",
+        "id": 40640,
+        "value": "6.3-lb bag",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "AttributeValue:{\"id\":66258,\"value\":\"16-lb bag\"}": {
+        "__typename": "AttributeValue",
+        "id": 66258,
+        "value": "16-lb bag",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "AttributeValue:{\"id\":280062,\"value\":\"30-lb bag\"}": {
+        "__typename": "AttributeValue",
+        "id": 280062,
+        "value": "30-lb bag",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "AttributeValue:{\"id\":null,\"value\":\"Seafood Medley\"}": {
+        "__typename": "AttributeValue",
+        "id": null,
+        "value": "Seafood Medley",
+        "attribute": {
+          "__ref": "Attribute:777"
+        }
+      },
+      "AttributeValue:{\"id\":69740,\"value\":\"14.2-lb bag\"}": {
+        "__typename": "AttributeValue",
+        "id": 69740,
+        "value": "14.2-lb bag",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
       },
       "MDA:777": {
         "__typename": "MDA",
