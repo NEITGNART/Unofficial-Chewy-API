@@ -1,0 +1,781 @@
+{
+  "pageProps": {
+    "analytics": null,
+    "cookies": {},
+    "environment": "prd",
+    "isInNetwork": false,
+    "isMobileApp": false,
+    "region": "us-east-2",
+    "requestId": "1d62eae,6616608B-48325C6C,UI-PDP-GVVkMIIEQ1C2m0nJjeOFRw",
+    "shortRegion": "use2",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:124.0) Gecko/20100101 Firefox/124.0",
+    "version": "2.350.0",
+    "pageData": {
+      "app_version": "SPA-2.350.0",
+      "awsRegion": "us-east-2",
+      "siteId": "0",
+      "subSiteId": "0",
+      "ecomm_pagetype": "product",
+      "featuresPresent": [
+        "extended-content",
+        "pet-lovers-also-bought-pdp",
+        "frequently-bought-together",
+        "product-comparison-widget",
+        "qa",
+        "reviews",
+        "pdp_sponsored_50",
+        "hero-promo-slot"
+      ],
+      "facetsApplied": [],
+      "pageType": "pdp",
+      "subPageType": "autoship",
+      "pageVariation": "",
+      "parentList": "pdp",
+      "pageId": "53376"
+    },
+    "spectrumLibraryUrl": "https://cdn.spectrumcustomizer.com/chewy/frontend/js/customizer.min.js",
+    "__WIDGET_STATE__": {},
+    "__APOLLO_STATE__": {
+      "Product:UHJvZHVjdDozODQyMA==": {
+        "__typename": "Product",
+        "id": "UHJvZHVjdDozODQyMA==",
+        "entryID": "38420",
+        "partNumber": "53286",
+        "name": "KONG Squeezz Ball Dog Toy, Color Varies",
+        "description": "It’s time for fetching fun with the KONG Squeezz Ball Dog Toy! It’s easy to use, fun to squeak and provides hours of enjoyment for you and your pooch during games of fetch. The recessed, hidden squeaker keeps the squeak going even when punctured. Created with a fun, erratic bounce that keeps your pooch engaged, this playful ball is paw-fect for indoor or outdoor use. It comes in assorted jewel tones—ruby, amethyst, emerald, sapphire—and color ships at random.",
+        "manufacturerName": "KONG",
+        "items({\"includeEnsemble\":true})": [
+          {
+            "__ref": "Item:SXRlbTozODUxMQ=="
+          },
+          {
+            "__ref": "Item:SXRlbTozODUwOQ=="
+          },
+          {
+            "__ref": "Item:SXRlbTozODUxMA=="
+          },
+          {
+            "__ref": "Item:SXRlbTozNDcxNDM="
+          }
+        ],
+        "slug": "kong-squeezz-ball-dog-toy-color",
+        "rating": 4.109,
+        "ratingCount": 4571,
+        "ratingDistributions": [
+          {
+            "__typename": "RatingDistribution",
+            "rating": 1,
+            "ratingCount": 513,
+            "ratingPercent": 11.2229
+          },
+          {
+            "__typename": "RatingDistribution",
+            "rating": 2,
+            "ratingCount": 306,
+            "ratingPercent": 6.6944
+          },
+          {
+            "__typename": "RatingDistribution",
+            "rating": 3,
+            "ratingCount": 330,
+            "ratingPercent": 7.2194
+          },
+          {
+            "__typename": "RatingDistribution",
+            "rating": 4,
+            "ratingCount": 443,
+            "ratingPercent": 9.6915
+          },
+          {
+            "__typename": "RatingDistribution",
+            "rating": 5,
+            "ratingCount": 2979,
+            "ratingPercent": 65.1717
+          }
+        ],
+        "recommendedRatingCount": 3869,
+        "recommendedRatingPercent": 84.6423102165828,
+        "breadcrumbs": [
+          {
+            "__ref": "Breadcrumb:288"
+          },
+          {
+            "__ref": "Breadcrumb:315"
+          },
+          {
+            "__ref": "Breadcrumb:317"
+          },
+          {
+            "__ref": "Breadcrumb:2329"
+          }
+        ],
+        "attributes({\"identifier\":\"ProductCategory\"})": [
+          {
+            "__typename": "Attribute",
+            "values": [
+              {
+                "__ref": "AttributeValue:{\"id\":775206,\"value\":\"Toys\"}"
+              }
+            ]
+          }
+        ],
+        "attributes({\"identifier\":\"PetType\"})": [
+          {
+            "__typename": "Attribute",
+            "values": [
+              {
+                "__ref": "AttributeValue:{\"id\":9066,\"value\":\"Dog\"}"
+              }
+            ]
+          }
+        ],
+        "attributes({\"identifier\":\"DrugType\"})": [],
+        "isEnsemble": false,
+        "mda": [
+          {
+            "__ref": "MDA:400"
+          }
+        ],
+        "brandURL": "https://www.chewy.com/brands/kong-6981",
+        "questionsCount": 22,
+        "attributes({\"includeEnsemble\":true,\"usage\":[\"DEFINING\"]})": [
+          {
+            "__ref": "Attribute:400"
+          }
+        ]
+      },
+      "Attribute:400": {
+        "__typename": "Attribute",
+        "id": 400,
+        "name": "Size",
+        "values": [
+          {
+            "__ref": "AttributeValue:{\"id\":1076150,\"value\":\"Medium\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":1004022,\"value\":\"Large\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":10077766,\"value\":\"X-Large\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":988207,\"value\":\"X-Large, bundle of 2\"}"
+          }
+        ]
+      },
+      "AttributeValue:{\"id\":10077766,\"value\":\"X-Large\"}": {
+        "__typename": "AttributeValue",
+        "id": 10077766,
+        "value": "X-Large",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "Item:SXRlbTozODUxMQ==": {
+        "__typename": "Item",
+        "id": "SXRlbTozODUxMQ==",
+        "name": "KONG Squeezz Ball Dog Toy, Color Varies, X-Large",
+        "advertisedPrice": "$11.43",
+        "gtin": "035585032009",
+        "description": "It’s time for fetching fun with the KONG Squeezz Ball Dog Toy! It’s easy to use, fun to squeak and provides hours of enjoyment for you and your pooch during games of fetch. The recessed, hidden squeaker keeps the squeak going even when punctured. Created with a fun, erratic bounce that keeps your pooch engaged, this playful ball is paw-fect for indoor or outdoor use. It comes in assorted jewel tones—ruby, amethyst, emerald, sapphire—and color ships at random.",
+        "inStock": true,
+        "partNumber": "53378",
+        "entryID": "38511",
+        "isGiftCard": false,
+        "isPrescription": false,
+        "isPublished": true,
+        "isUnavailable": false,
+        "perUnitPrice": null,
+        "unitOfMeasure": null,
+        "attributeValues({\"includeEnsemble\":true,\"usage\":[\"DEFINING\"]})": [
+          {
+            "__ref": "AttributeValue:{\"id\":10077766,\"value\":\"X-Large\"}"
+          }
+        ],
+        "fullImage": {
+          "__typename": "Image",
+          "url({\"autoCrop\":true,\"square\":144})": "https://image.chewy.com/is/image/catalog/53378_MAIN._AC_SS144_V1524496027_.jpg",
+          "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/53378_MAIN._AC_SX275_V1524496027_.jpg"
+        }
+      },
+      "AttributeValue:{\"id\":1076150,\"value\":\"Medium\"}": {
+        "__typename": "AttributeValue",
+        "id": 1076150,
+        "value": "Medium",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "Item:SXRlbTozODUwOQ==": {
+        "__typename": "Item",
+        "id": "SXRlbTozODUwOQ==",
+        "name": "KONG Squeezz Ball Dog Toy, Color Varies, Medium",
+        "advertisedPrice": "$6.99",
+        "gtin": "035585032023",
+        "description": "It’s time for fetching fun with the KONG Squeezz Ball Dog Toy! It’s easy to use, fun to squeak and provides hours of enjoyment for you and your pooch during games of fetch. The recessed, hidden squeaker keeps the squeak going even when punctured. Created with a fun, erratic bounce that keeps your pooch engaged, this playful ball is paw-fect for indoor or outdoor use. It comes in assorted jewel tones—ruby, amethyst, emerald, sapphire—and color ships at random.",
+        "inStock": true,
+        "partNumber": "53376",
+        "entryID": "38509",
+        "isGiftCard": false,
+        "isPrescription": false,
+        "isPublished": true,
+        "isUnavailable": false,
+        "perUnitPrice": null,
+        "unitOfMeasure": null,
+        "attributeValues({\"includeEnsemble\":true,\"usage\":[\"DEFINING\"]})": [
+          {
+            "__ref": "AttributeValue:{\"id\":1076150,\"value\":\"Medium\"}"
+          }
+        ],
+        "fullImage": {
+          "__typename": "Image",
+          "url({\"autoCrop\":true,\"square\":144})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SS144_V1524496316_.jpg",
+          "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SX275_V1524496316_.jpg"
+        },
+        "product": {
+          "__ref": "Product:UHJvZHVjdDozODQyMA=="
+        },
+        "onSpecial": true,
+        "isHealthCare": false,
+        "reviewsDisclaimer": {
+          "showDisclaimer": false
+        },
+        "isProductSchemaVariant": false,
+        "images": [
+          {
+            "__typename": "Image",
+            "url({\"maxHeight\":630})": "https://image.chewy.com/is/image/catalog/53376_MAIN._SY630_V1524496316_.jpg",
+            "url({\"autoCrop\":true,\"square\":1800})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SS1800_V1524496316_.jpg",
+            "url({\"autoCrop\":true,\"square\":108})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SS108_V1524496316_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":600})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SL600_V1524496316_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1200})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SL1200_V1524496316_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1800})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SL1800_V1524496316_.jpg",
+            "url({\"autoCrop\":true,\"square\":600})": "https://image.chewy.com/is/image/catalog/53376_MAIN._AC_SS600_V1524496316_.jpg"
+          },
+          {
+            "__typename": "Image",
+            "url({\"maxHeight\":630})": "https://image.chewy.com/is/image/catalog/53376_PT1._SY630_V1524496034_.jpg",
+            "url({\"autoCrop\":true,\"square\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT1._AC_SS1800_V1524496034_.jpg",
+            "url({\"autoCrop\":true,\"square\":108})": "https://image.chewy.com/is/image/catalog/53376_PT1._AC_SS108_V1524496034_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":600})": "https://image.chewy.com/is/image/catalog/53376_PT1._AC_SL600_V1524496034_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1200})": "https://image.chewy.com/is/image/catalog/53376_PT1._AC_SL1200_V1524496034_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT1._AC_SL1800_V1524496034_.jpg",
+            "url({\"autoCrop\":true,\"square\":600})": "https://image.chewy.com/is/image/catalog/53376_PT1._AC_SS600_V1524496034_.jpg"
+          },
+          {
+            "__typename": "Image",
+            "url({\"maxHeight\":630})": "https://image.chewy.com/is/image/catalog/53376_PT2._SY630_V1603129320_.jpg",
+            "url({\"autoCrop\":true,\"square\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT2._AC_SS1800_V1603129320_.jpg",
+            "url({\"autoCrop\":true,\"square\":108})": "https://image.chewy.com/is/image/catalog/53376_PT2._AC_SS108_V1603129320_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":600})": "https://image.chewy.com/is/image/catalog/53376_PT2._AC_SL600_V1603129320_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1200})": "https://image.chewy.com/is/image/catalog/53376_PT2._AC_SL1200_V1603129320_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT2._AC_SL1800_V1603129320_.jpg",
+            "url({\"autoCrop\":true,\"square\":600})": "https://image.chewy.com/is/image/catalog/53376_PT2._AC_SS600_V1603129320_.jpg"
+          },
+          {
+            "__typename": "Image",
+            "url({\"maxHeight\":630})": "https://image.chewy.com/is/image/catalog/53376_PT3._SY630_V1603166779_.jpg",
+            "url({\"autoCrop\":true,\"square\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT3._AC_SS1800_V1603166779_.jpg",
+            "url({\"autoCrop\":true,\"square\":108})": "https://image.chewy.com/is/image/catalog/53376_PT3._AC_SS108_V1603166779_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":600})": "https://image.chewy.com/is/image/catalog/53376_PT3._AC_SL600_V1603166779_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1200})": "https://image.chewy.com/is/image/catalog/53376_PT3._AC_SL1200_V1603166779_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT3._AC_SL1800_V1603166779_.jpg",
+            "url({\"autoCrop\":true,\"square\":600})": "https://image.chewy.com/is/image/catalog/53376_PT3._AC_SS600_V1603166779_.jpg"
+          },
+          {
+            "__typename": "Image",
+            "url({\"maxHeight\":630})": "https://image.chewy.com/is/image/catalog/53376_PT4._SY630_V1603166180_.jpg",
+            "url({\"autoCrop\":true,\"square\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT4._AC_SS1800_V1603166180_.jpg",
+            "url({\"autoCrop\":true,\"square\":108})": "https://image.chewy.com/is/image/catalog/53376_PT4._AC_SS108_V1603166180_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":600})": "https://image.chewy.com/is/image/catalog/53376_PT4._AC_SL600_V1603166180_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1200})": "https://image.chewy.com/is/image/catalog/53376_PT4._AC_SL1200_V1603166180_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT4._AC_SL1800_V1603166180_.jpg",
+            "url({\"autoCrop\":true,\"square\":600})": "https://image.chewy.com/is/image/catalog/53376_PT4._AC_SS600_V1603166180_.jpg"
+          },
+          {
+            "__typename": "Image",
+            "url({\"maxHeight\":630})": "https://image.chewy.com/is/image/catalog/53376_PT5._SY630_V1603147297_.jpg",
+            "url({\"autoCrop\":true,\"square\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT5._AC_SS1800_V1603147297_.jpg",
+            "url({\"autoCrop\":true,\"square\":108})": "https://image.chewy.com/is/image/catalog/53376_PT5._AC_SS108_V1603147297_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":600})": "https://image.chewy.com/is/image/catalog/53376_PT5._AC_SL600_V1603147297_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1200})": "https://image.chewy.com/is/image/catalog/53376_PT5._AC_SL1200_V1603147297_.jpg",
+            "url({\"autoCrop\":true,\"sideLongest\":1800})": "https://image.chewy.com/is/image/catalog/53376_PT5._AC_SL1800_V1603147297_.jpg",
+            "url({\"autoCrop\":true,\"square\":600})": "https://image.chewy.com/is/image/catalog/53376_PT5._AC_SS600_V1603147297_.jpg"
+          }
+        ],
+        "loyaltyPromotionsMessage": null,
+        "maxQuantity": 12,
+        "topPromotion": {
+          "__ref": "Promotion:11309"
+        },
+        "isPersonalized": false,
+        "isVetDiet": false,
+        "isSinglePill": false,
+        "clinicOffers({\"offerRankingStrategy\":\"PRICE_PREFERRED\"})": null,
+        "strikeThroughPrice": null,
+        "strikeThroughPriceType": null,
+        "strikeThroughSavings": null,
+        "strikeThroughSavingsPct": null,
+        "autoshipPrice": null,
+        "shippingMessage": "**FREE 1-3 day delivery** on first-time orders over $35",
+        "shippingTimeframe": "1-3 day",
+        "dropshipMessage": null,
+        "rxShippingMessage": null,
+        "isAutoshipAllowed": true,
+        "isFrozen": false,
+        "isFresh": false,
+        "isBundle": false,
+        "is3DCustomizable": false,
+        "parentCatalogGroupId": [
+          2817,
+          135366,
+          127238,
+          9993,
+          3274,
+          120014,
+          127310,
+          13775,
+          3280,
+          13778,
+          2902,
+          2329,
+          13786,
+          13531,
+          1822,
+          2914,
+          14245,
+          2731,
+          2732,
+          130286,
+          135350,
+          8570,
+          2810,
+          315,
+          135358,
+          102526,
+          127230
+        ],
+        "promotions": [
+          {
+            "__ref": "Promotion:11309"
+          },
+          {
+            "__ref": "Promotion:11311"
+          }
+        ],
+        "inSheltersWishList": false,
+        "autoshipDiscountPct": null,
+        "autoshipPromotions": [],
+        "videos": [
+          {
+            "__typename": "Video",
+            "image": "https://embed-ssl.wistia.com/deliveries/d34fd195f6bd79fcb04d5f65219f8e49a40b5af2.jpg?image_crop_resized=528x297",
+            "thumbnail": "https://fast.wistia.com/embed/medias/0ymrvv2rl3/swatch",
+            "url": "https://fast.wistia.com/medias/0ymrvv2rl3"
+          }
+        ],
+        "mapEnforced": false,
+        "mapPrice": null,
+        "mapSavings": null,
+        "mapEnforcedText": null,
+        "infoGroups": [
+          {
+            "__typename": "InfoGroup",
+            "name": "Size",
+            "sections": [
+              {
+                "__typename": "InfoGroupSection",
+                "title": null,
+                "usage": "SIZE_CHART",
+                "content": {
+                  "__typename": "Markdown",
+                  "content": "|Size|Length|Width|Height|\r\n|---|---|---|---|\r\n|Medium|2.5 inches|2.50 inches|2.50 inches|\r\n|Large|3 inches|3 inches|3 inches|\r\n|X-Large|3 inches|3.50 inches|3.50 inches|"
+                }
+              }
+            ]
+          }
+        ],
+        "isBundleMultiSku": false,
+        "dimensions": "2.5 x 3.5 x 3.5 inches",
+        "weight": null,
+        "descriptionAttributes": [
+          {
+            "__typename": "Attribute",
+            "name": "Lifestage",
+            "values": [
+              {
+                "__ref": "AttributeValue:{\"id\":10866294,\"value\":\"All Lifestages\"}"
+              },
+              {
+                "__ref": "AttributeValue:{\"id\":9060,\"value\":\"Adult\"}"
+              }
+            ]
+          },
+          {
+            "__typename": "Attribute",
+            "name": "Breed Size",
+            "values": [
+              {
+                "__ref": "AttributeValue:{\"id\":13791,\"value\":\"Medium Breeds\"}"
+              }
+            ]
+          },
+          {
+            "__typename": "Attribute",
+            "name": "Toy Feature",
+            "values": [
+              {
+                "__ref": "AttributeValue:{\"id\":70047,\"value\":\"Squeaky\"}"
+              }
+            ]
+          },
+          {
+            "__typename": "Attribute",
+            "name": "Material",
+            "values": [
+              {
+                "__ref": "AttributeValue:{\"id\":85547,\"value\":\"Rubber\"}"
+              }
+            ]
+          }
+        ],
+        "minimumPetWeights": [],
+        "maximumPetWeights": [],
+        "keyBenefits": [
+          "Crafted for easy use and fun to squeak, this paw-some ball provides hours of enjoyment for you and your pooch during games of fetch.",
+          "Recessed, hidden squeaker keeps the squeak going even when punctured.",
+          "Created with a fun, erratic bounce that keeps your pooch engaged.",
+          "Made for indoor or outdoor use.",
+          "Comes in assorted jewel tones—ruby, amethyst, emerald, sapphire—and color ships at random."
+        ],
+        "whatsIncluded": null,
+        "activeIngredients": null,
+        "cautions": null,
+        "uses": null,
+        "aboutAuthor": null,
+        "proposition65": null,
+        "disclaimers": {
+          "__typename": "Markdown",
+          "content": "Ships in a variety of random and fun colors!\n\nEvery dog plays differently and, since not all toys are created equal, it’s always best to keep a close watch on your pup in case things get ruff. Supervised play will help toys last longer and most importantly keep your pal safe. No dog toy is truly indestructible, so always remove the toy from playtime if pieces begin to break off."
+        },
+        "specialNotes": {
+          "__typename": "Markdown",
+          "content": null
+        },
+        "specialNotesContent": null,
+        "possibleSideEffects": null,
+        "foodAndDrugInteractions": null,
+        "patientInfoSheets": null,
+        "packageInsert": null,
+        "isEmbroiderCustomizable": false,
+        "isEngraveCustomizable": false,
+        "is2DEnhancedCustomizable": false,
+        "personalizationAttributes": null,
+        "isLiveFeed": false,
+        "isLivePlant": false,
+        "bundleItems": null,
+        "bundleTitle": null,
+        "topHeadlinePromotion": null,
+        "isRefrigerated": false,
+        "isRestricted": false,
+        "restrictedAvailability": [],
+        "bundleTheme": null,
+        "bundleIncludes": null,
+        "enhancedContent": null,
+        "defaultPrescribedItem": null,
+        "targetedPromotions": []
+      },
+      "AttributeValue:{\"id\":1004022,\"value\":\"Large\"}": {
+        "__typename": "AttributeValue",
+        "id": 1004022,
+        "value": "Large",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "Item:SXRlbTozODUxMA==": {
+        "__typename": "Item",
+        "id": "SXRlbTozODUxMA==",
+        "name": "KONG Squeezz Ball Dog Toy, Color Varies, Large",
+        "advertisedPrice": "$8.99",
+        "gtin": "035585032016",
+        "description": "It’s time for fetching fun with the KONG Squeezz Ball Dog Toy! It’s easy to use, fun to squeak and provides hours of enjoyment for you and your pooch during games of fetch. The recessed, hidden squeaker keeps the squeak going even when punctured. Created with a fun, erratic bounce that keeps your pooch engaged, this playful ball is paw-fect for indoor or outdoor use. It comes in assorted jewel tones—ruby, amethyst, emerald, sapphire—and color ships at random.",
+        "inStock": true,
+        "partNumber": "53377",
+        "entryID": "38510",
+        "isGiftCard": false,
+        "isPrescription": false,
+        "isPublished": true,
+        "isUnavailable": false,
+        "perUnitPrice": null,
+        "unitOfMeasure": null,
+        "attributeValues({\"includeEnsemble\":true,\"usage\":[\"DEFINING\"]})": [
+          {
+            "__ref": "AttributeValue:{\"id\":1004022,\"value\":\"Large\"}"
+          }
+        ],
+        "fullImage": {
+          "__typename": "Image",
+          "url({\"autoCrop\":true,\"square\":144})": "https://image.chewy.com/is/image/catalog/53377_MAIN._AC_SS144_V1524496020_.jpg",
+          "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/53377_MAIN._AC_SX275_V1524496020_.jpg"
+        }
+      },
+      "AttributeValue:{\"id\":988207,\"value\":\"X-Large, bundle of 2\"}": {
+        "__typename": "AttributeValue",
+        "id": 988207,
+        "value": "X-Large, bundle of 2",
+        "attribute": {
+          "__ref": "Attribute:400"
+        }
+      },
+      "Item:SXRlbTozNDcxNDM=": {
+        "__typename": "Item",
+        "id": "SXRlbTozNDcxNDM=",
+        "name": "KONG Squeezz Ball Dog Toy, Color Varies, X-Large, bundle of 2",
+        "advertisedPrice": "$21.72",
+        "gtin": null,
+        "description": "It’s time for fetching fun with the KONG Squeezz Ball Dog Toy! It’s easy to use, fun to squeak and provides hours of enjoyment for you and your pooch during games of fetch. The recessed, hidden squeaker keeps the squeak going even when punctured. Created with a fun, erratic bounce that keeps your pooch engaged, this playful ball is paw-fect for indoor or outdoor use. It comes in assorted jewel tones—ruby, amethyst, emerald, sapphire—and color ships at random.",
+        "inStock": true,
+        "partNumber": "320863",
+        "entryID": "347143",
+        "isGiftCard": false,
+        "isPrescription": false,
+        "isPublished": true,
+        "isUnavailable": false,
+        "perUnitPrice": null,
+        "unitOfMeasure": null,
+        "attributeValues({\"includeEnsemble\":true,\"usage\":[\"DEFINING\"]})": [
+          {
+            "__ref": "AttributeValue:{\"id\":988207,\"value\":\"X-Large, bundle of 2\"}"
+          }
+        ],
+        "fullImage": {
+          "__typename": "Image",
+          "url({\"autoCrop\":true,\"square\":144})": "https://image.chewy.com/is/image/catalog/320863_MAIN._AC_SS144_V1631052682_.jpg",
+          "url({\"autoCrop\":true,\"maxWidth\":275})": "https://image.chewy.com/is/image/catalog/320863_MAIN._AC_SX275_V1631052682_.jpg"
+        }
+      },
+      "Breadcrumb:288": {
+        "__typename": "Breadcrumb",
+        "id": "288",
+        "name": "Dog",
+        "url": "https://www.chewy.com/b/dog-288"
+      },
+      "Breadcrumb:315": {
+        "__typename": "Breadcrumb",
+        "id": "315",
+        "name": "Toys",
+        "url": "https://www.chewy.com/b/toys-315"
+      },
+      "Breadcrumb:317": {
+        "__typename": "Breadcrumb",
+        "id": "317",
+        "name": "Fetch Toys",
+        "url": "https://www.chewy.com/b/fetch-toys-317"
+      },
+      "Breadcrumb:2329": {
+        "__typename": "Breadcrumb",
+        "id": "2329",
+        "name": "Balls",
+        "url": "https://www.chewy.com/b/balls-2329"
+      },
+      "AttributeValue:{\"id\":775206,\"value\":\"Toys\"}": {
+        "__typename": "AttributeValue",
+        "id": 775206,
+        "value": "Toys"
+      },
+      "AttributeValue:{\"id\":9066,\"value\":\"Dog\"}": {
+        "__typename": "AttributeValue",
+        "id": 9066,
+        "value": "Dog"
+      },
+      "Promotion:11309": {
+        "__typename": "Promotion",
+        "id": 11309,
+        "isSmartshelfEligible": true,
+        "flagText": null,
+        "longDescription": "Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must have an account and be logged to redeem and view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: Gift Card Terms (USA). Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/29/2024 6:00AM ET, while supplies last, subject to Terms.",
+        "shortDescription": "New Customers Only: Spend $49+, Get $20 eGift Card + Free Shipping with code: WELCOME",
+        "helperText": "See Details for instructions to redeem",
+        "desktopPromoTermDetailsUrl": null,
+        "mobilePromoTermDetailsUrl": null,
+        "accessibilityPromoTermDetails": null,
+        "promoHeadlineLong": null,
+        "promoHeadlineShort": null
+      },
+      "Promotion:11311": {
+        "__typename": "Promotion",
+        "id": 11311
+      },
+      "MDA:400": {
+        "__typename": "MDA",
+        "id": 400,
+        "name": "Size",
+        "isEnsemble": false,
+        "options": [
+          {
+            "__ref": "AttributeValue:{\"id\":1076150,\"value\":\"Medium\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":1004022,\"value\":\"Large\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":10077766,\"value\":\"X-Large\"}"
+          },
+          {
+            "__ref": "AttributeValue:{\"id\":988207,\"value\":\"X-Large, bundle of 2\"}"
+          }
+        ]
+      },
+      "AttributeValue:{\"id\":10866294,\"value\":\"All Lifestages\"}": {
+        "__typename": "AttributeValue",
+        "id": 10866294,
+        "value": "All Lifestages"
+      },
+      "AttributeValue:{\"id\":9060,\"value\":\"Adult\"}": {
+        "__typename": "AttributeValue",
+        "id": 9060,
+        "value": "Adult"
+      },
+      "AttributeValue:{\"id\":13791,\"value\":\"Medium Breeds\"}": {
+        "__typename": "AttributeValue",
+        "id": 13791,
+        "value": "Medium Breeds"
+      },
+      "AttributeValue:{\"id\":70047,\"value\":\"Squeaky\"}": {
+        "__typename": "AttributeValue",
+        "id": 70047,
+        "value": "Squeaky"
+      },
+      "AttributeValue:{\"id\":85547,\"value\":\"Rubber\"}": {
+        "__typename": "AttributeValue",
+        "id": 85547,
+        "value": "Rubber"
+      },
+      "ROOT_QUERY": {
+        "__typename": "Query",
+        "analytics": {
+          "__typename": "Analytics",
+          "featureToggles": {
+            "sfpa.analytics.public.emitter.clickstream_whitelist": "Product Clicked,Promotion Clicked,Order Completed,Checkout Started,Product Added,Cart Viewed,Product Viewed,Page Viewed,Promotion Viewed,Product List Viewed,Product Removed",
+            "sfpa.analytics.public.emitter.home.sampling_rate": "1",
+            "sfpa.analytics.public.emitter.log_level": "2",
+            "sfpa.analytics.public.emitter.pagetype_whitelist": "*",
+            "sfpa.analytics.public.emitter.pdp.sampling_rate": "1",
+            "sfpa.analytics.public.emitter.sampling_rate": "1.0",
+            "sfpa.analytics.public.emitter.segment_unidentified_events_blacklist": "[\"checkout:click:add-details:checkout\", \"checkout:impression:(confirm_credit_card|paypal_reauthenticate):checkout\", \"user-error:checkout:(invalid_card_number|card_number_required|paypal_auth_different_account):checkout\", \"thank-you:(click|impression):refer-a-friend:checkout\", \"My-pets:completed:Add-new-pet:checkout\", \"My-pets:error:Add-new-pet-failed:checkout\", \"eec:(update-cart-item|removeFromSFL|removeFromCart|saved-for-later|undoRemoveFromSFL):(saved-for-later|giftcard|cart):cart\", \"eec:checkout:cart:cart\", \"view-similar-item:click:view-similar-item-link:cart\", \"view-complete-the-deal:click:view-complete-the-deal-link:cart\", \"pdp-reviews:click:reviews-terms-condition-link:pdp\", \"write-review:click:reviews-terms-condition-link:pdp\", \"pdp:click:Shop the Deal:pdp\", \"pdp:click:See All Deals:pdp\", \"pdp:click:buy from vet clinic - buying options:pdp\", \"pdp:impression:buy from vet clinic - buying options:pdp\", \"pdp:impression:Prescriber-badge:pdp\", \"pdp:impression:buy from vet clinic box:pdp\", \"pdp:selected another option:buy from vet clinic box:pdp\", \"eec:checkout:mini-cart\", \"eec:detail:In Stock\", \"eec:detail:Out of Stock\", \"eec:impression:zone-.*\", \"eec:impression:homepage-flyout-banner-horse\", \"eec:purchase:(FirstOrder|FirstOrder-Autoship|RepeatOrder|RepeatOrder-Autoship)\", \"eec:addToAutoship:pharmacy-pdp\", \"eec:addToAutoship:favorites\", \"eec:addToAutoship:product-comparison-widget\", \"eec:addToAutoship:order-history\", \"eec:addToAutoship:pdp\", \"eec:addToAutoship:order-details\", \"eec:addToAutoship:buy-it-again\", \"eec:addOnceToAutoship:pdp\", \"eec:impression:dog-popular.*\", \"eec:click:dog-popular.*\", \"eec:startAutoship:pharmacy-pdp\", \"eec:startAutoship:favorites\", \"eec:startAutoship:pdp\"]\n",
+            "sfpa.analytics.public.env.homeurl": "https://www.chewy.com",
+            "sfpa.analytics.public.fingerprint.cdn.enabled": "false",
+            "sfpa.analytics.public.fingerprint.cdn.whitelist": "pdp,cart,pet_insurance",
+            "sfpa.analytics.public.fingerprint.duration": "2",
+            "sfpa.analytics.public.fingerprint.public_key": "uMeW0WfnyLJmtFjTtKZv",
+            "sfpa.analytics.public.fingerprint.timeout": "40000",
+            "sfpa.analytics.public.fingerprint.whitelist": "ALL",
+            "sfpa.analytics.public.ila.enabled": "false",
+            "sfpa.analytics.public.user.context.cid.allowed.pages": "ALL",
+            "sfpa.analytics.public.user.context.cid.compare.rate": "0",
+            "sfpa.analytics.public.user.context.cid.default.pages": "ALL",
+            "sfpa.analytics.public.visitor_id.enabled": "true",
+            "sfpa.analytics.public.visitor_id.pagetype_whitelist": "home,pdp,plp,cart,checkout,thank-you,pet-health,pet_profile,shelter_and_rescue,pet_insurance,account",
+            "sfpa.analytics.public.visitor_id.sampling_rate": "100"
+          }
+        },
+        "item({\"id\":\"38509\"})": {
+          "__ref": "Item:SXRlbTozODUwOQ=="
+        },
+        "pdp": {
+          "__typename": "PDP",
+          "featureToggles": {
+            "__typename": "PDPFeatureToggles",
+            "autoshipBuyboxOverride": "VARIANT2",
+            "autoshipBuyboxOverrideConflictingPromos": [
+              5213,
+              7564,
+              10432,
+              10631,
+              10770,
+              10883,
+              11195,
+              11196,
+              11197,
+              11210,
+              11318,
+              11401,
+              11435,
+              11448,
+              11489,
+              11563,
+              11565
+            ],
+            "autoshipFirstTimeDiscountMaxSavings": "20",
+            "autoshipFirstTimeDiscountPercent": "35",
+            "autoshipShipOnceEnabled": true,
+            "autoshipShipOnceSpecialPromotion": "10595",
+            "autoshipStartFromPDPEnabled": true,
+            "autoshipSuppressFTASList": null,
+            "autoshipUseLibsEnabled": false,
+            "collectPetAndClinicInfoEnabled": true,
+            "enhancedContentMobileEnabled": true,
+            "enhancedContentMobileSkuList": "45430 45433 45435 45436 45437 45439 45441 45444 45445 45450 45451 46053 46054 46056 52338 52346 52347 52348 52349 65104 85643 85646 85649 85652 85655 85657 85659 85661 85663 85666 85669 85671 102180 118569 128504 128509 128514 132654 132658 132660 132662 142408 156763 157037 157039 157041 157043 157045 157047 157049 228768 228770 228772 228774 316680 346281 346283 346285 355800 368973 519166 519558 519662 537606 583590 654366 680814 680838 680862 680886 684406 706278 231253 231257 231255 537606 651278 114287 114309 114311 114350 114341 114313 114339 141669 156842 214646 214648 367517 369025 369027 369029 525550 114319 141667 689606 758454 758470 765974 765990 837006 69602 69603 69604 69605 81161 81165 90687 53279 143485 143487 143489 143493 184973 184975 184977 184979 184983 184985 184987 184989 199991 205933 205935 205937 205939 205941 205943 205945 205947 205949 205953 205955 205959 249446 249448 249450 249452 278803 307662 307664 352532 352534 633262 633278 843398",
+            "fbtWidgetEnabled": true,
+            "freeShippingNewCustomerEnabled": true,
+            "heroPromoSlotEnabled": true,
+            "loyaltyFeaturesEnabled": false,
+            "pcwWidgetEnabled": true,
+            "pdp50WidgetEnabled": true,
+            "plabWidgetEnabled": true,
+            "plasfWidgetEnabled": true,
+            "promoSmartshelfWidgetEnabled": true,
+            "promoSmartshelfWidgetTitleEnabled": true,
+            "qnaEnabled": true,
+            "recentlyViewedEnabled": true,
+            "reviewsEnabled": true
+          },
+          "experimentOverrides": {
+            "2022_10_SFW_PDP_WORD_CLOUDS": "TREATMENT",
+            "2022_Q4_PDP_BUY_FROM_VET": "CONDENSED_2022_Q4",
+            "2023_05_AS_ADD_TO_AUTOSHIP_ON_PDP": "AS_CTAS",
+            "2023_05_SFW_PDP_AUTOSHIP_SHIP_ONCE_TREATS": "SHIP_ONCE",
+            "2023_Q1_FIRST_TIME_AUTOSHIP_DISCOUNT": "CONTROL"
+          }
+        },
+        "product({\"id\":\"38509\"})": {
+          "__ref": "Product:UHJvZHVjdDozODQyMA=="
+        }
+      }
+    },
+    "nav": null,
+    "featureToggles": {
+      "sfpa.analytics.public.emitter.clickstream_whitelist": "Product Clicked,Promotion Clicked,Order Completed,Checkout Started,Product Added,Cart Viewed,Product Viewed,Page Viewed,Promotion Viewed,Product List Viewed,Product Removed",
+      "sfpa.analytics.public.emitter.home.sampling_rate": "1",
+      "sfpa.analytics.public.emitter.log_level": "2",
+      "sfpa.analytics.public.emitter.pagetype_whitelist": "*",
+      "sfpa.analytics.public.emitter.pdp.sampling_rate": "1",
+      "sfpa.analytics.public.emitter.sampling_rate": "1.0",
+      "sfpa.analytics.public.emitter.segment_unidentified_events_blacklist": "[\"checkout:click:add-details:checkout\", \"checkout:impression:(confirm_credit_card|paypal_reauthenticate):checkout\", \"user-error:checkout:(invalid_card_number|card_number_required|paypal_auth_different_account):checkout\", \"thank-you:(click|impression):refer-a-friend:checkout\", \"My-pets:completed:Add-new-pet:checkout\", \"My-pets:error:Add-new-pet-failed:checkout\", \"eec:(update-cart-item|removeFromSFL|removeFromCart|saved-for-later|undoRemoveFromSFL):(saved-for-later|giftcard|cart):cart\", \"eec:checkout:cart:cart\", \"view-similar-item:click:view-similar-item-link:cart\", \"view-complete-the-deal:click:view-complete-the-deal-link:cart\", \"pdp-reviews:click:reviews-terms-condition-link:pdp\", \"write-review:click:reviews-terms-condition-link:pdp\", \"pdp:click:Shop the Deal:pdp\", \"pdp:click:See All Deals:pdp\", \"pdp:click:buy from vet clinic - buying options:pdp\", \"pdp:impression:buy from vet clinic - buying options:pdp\", \"pdp:impression:Prescriber-badge:pdp\", \"pdp:impression:buy from vet clinic box:pdp\", \"pdp:selected another option:buy from vet clinic box:pdp\", \"eec:checkout:mini-cart\", \"eec:detail:In Stock\", \"eec:detail:Out of Stock\", \"eec:impression:zone-.*\", \"eec:impression:homepage-flyout-banner-horse\", \"eec:purchase:(FirstOrder|FirstOrder-Autoship|RepeatOrder|RepeatOrder-Autoship)\", \"eec:addToAutoship:pharmacy-pdp\", \"eec:addToAutoship:favorites\", \"eec:addToAutoship:product-comparison-widget\", \"eec:addToAutoship:order-history\", \"eec:addToAutoship:pdp\", \"eec:addToAutoship:order-details\", \"eec:addToAutoship:buy-it-again\", \"eec:addOnceToAutoship:pdp\", \"eec:impression:dog-popular.*\", \"eec:click:dog-popular.*\", \"eec:startAutoship:pharmacy-pdp\", \"eec:startAutoship:favorites\", \"eec:startAutoship:pdp\"]\n",
+      "sfpa.analytics.public.env.homeurl": "https://www.chewy.com",
+      "sfpa.analytics.public.fingerprint.cdn.enabled": "false",
+      "sfpa.analytics.public.fingerprint.cdn.whitelist": "pdp,cart,pet_insurance",
+      "sfpa.analytics.public.fingerprint.duration": "2",
+      "sfpa.analytics.public.fingerprint.public_key": "uMeW0WfnyLJmtFjTtKZv",
+      "sfpa.analytics.public.fingerprint.timeout": "40000",
+      "sfpa.analytics.public.fingerprint.whitelist": "ALL",
+      "sfpa.analytics.public.ila.enabled": "false",
+      "sfpa.analytics.public.user.context.cid.allowed.pages": "ALL",
+      "sfpa.analytics.public.user.context.cid.compare.rate": "0",
+      "sfpa.analytics.public.user.context.cid.default.pages": "ALL",
+      "sfpa.analytics.public.visitor_id.enabled": "true",
+      "sfpa.analytics.public.visitor_id.pagetype_whitelist": "home,pdp,plp,cart,checkout,thank-you,pet-health,pet_profile,shelter_and_rescue,pet_insurance,account",
+      "sfpa.analytics.public.visitor_id.sampling_rate": "100"
+    },
+    "experimentOverrides": {
+      "2022_10_SFW_PDP_WORD_CLOUDS": "TREATMENT",
+      "2022_Q4_PDP_BUY_FROM_VET": "CONDENSED_2022_Q4",
+      "2023_05_AS_ADD_TO_AUTOSHIP_ON_PDP": "AS_CTAS",
+      "2023_05_SFW_PDP_AUTOSHIP_SHIP_ONCE_TREATS": "SHIP_ONCE",
+      "2023_Q1_FIRST_TIME_AUTOSHIP_DISCOUNT": "CONTROL"
+    },
+    "authContext": null
+  },
+  "__N_SSP": true
+}

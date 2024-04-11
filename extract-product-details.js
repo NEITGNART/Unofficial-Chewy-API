@@ -1,5 +1,4 @@
 import fs from 'fs';
-import removeMd from 'remove-markdown';
 
 function convertCurrencyStringToNumber(currencyString) {
     if (!currencyString) return 0;
@@ -9,115 +8,102 @@ function convertCurrencyStringToNumber(currencyString) {
 export default function extractProductDetails(itemId, jsonObject, promotional_information = "") {
     const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
     const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
-
-
-
-
-
-
-
-    // const products = [];
-    // const productBase = {
-    //     price: convertCurrencyStringToNumber(item.strikeThroughPrice),
-    //     currency: "USD"
-    // }
-
-    console.log(getNonAutoShipProduct(item, jsonObject, promotional_information));
-
-
-    // const price = convertCurrencyStringToNumber(item.strikeThroughPrice)
-
-
-    // const price = convertCurrencyStringToNumber(item.advertisedPrice)
-
-
-    // if (item.isAutoshipAllowed) {
-    //     // split into 2 items
-    //     // productname + " - Autosent"
-    //     const autoshipProduct = {
-    //         productName: `${item.name} - Autosent`,
-    //         price: price,
-    //         autoshipPrice: convertCurrencyStringToNumber(item.autoshipPrice),
-    //         savePrice: convertCurrencyStringToNumber(item.strikeThroughSavings),
-    //         inStock: item.inStock,
-    //         maxQuantity: item.maxQuantity,
-    //         categoryLevel: getBreadCum(product.breadcrumbs, jsonObject).join(" / "),
-    //         brand: product.manufacturerName,
-    //         shipping: price >= 49 ? 0 : 4.95,
-    //         productCode: jsonObject.pageProps.pageData.pageId,
-    //         gtin: item.gtin ? `00${item.gtin}` : null,
-    //         imageUrl: item.images[0][`url({"autoCrop":true,"square":108})`],
-    //         metadata: {
-    //             generic_name: getMetadataValue(product.descriptionAttributes, "Generic Name"),
-    //             product_form: getMetadataValue(product.descriptionAttributes, "Product Form"),
-    //             drug_type: getMetadataValue(product.descriptionAttributes, "Drug Type"),
-    //             prescription_item: item?.isPrescriptionItem ? "Yes" : "No",
-    //             autoshipPrice: item?.autoshipPrice ? convertCurrencyStringToNumber(item.autoshipPrice) : null,
-    //             shipping_info: item?.shippingMessage ?? null,
-    //             product_description: item?.description ?? null,
-    //             promotionalText: promotionalText,
-    //             promotional_information: promotional_information,
-    //             pack_size: getSizeAttributes,
-    //             per_unit_price: item?.pricePerUnit ? convertCurrencyStringToNumber(item.pricePerUnit) : null,
-    //             unit_of_measure: item?.unitOfMeasure ?? null,
-    //             msrp: msrp,
-    //         }
-    //     };
-    //     // console.log(autoshipProduct)
-
-    // } else {
-    //     const product = { ...productBase, 'productName': item.name };
-    // Options also
+    const product = getNonAutoShipProduct(item, jsonObject, promotional_information);
+    if (!item.isAutoshipAllowed) {
+        product.shippingPrice = product.price >= 49 ? 0 : 4.95;
+        return [product];
+    }
+    // clone product and update autoship price
+    const autoshipProduct = JSON.parse(JSON.stringify(product));
+    autoshipProduct.productName = `${product.productName} - Autosent`;
+    autoshipProduct.price = convertCurrencyStringToNumber(item.autoshipPrice);
+    product.shippingPrice = autoshipProduct.price >= 49 ? 0 : 4.95;
+    autoshipProduct.is_autoship_option = true;
+    return [product, autoshipProduct];
 }
 
-function getNonAutoShipProduct(item, jsonObject, promotional_information) {
+function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="") {
     const promotionRef = item.topPromotion["__ref"];
     const productRef = item.product["__ref"];
     const product = jsonObject?.pageProps["__APOLLO_STATE__"]?.[productRef];
     const attributes = item[`attributeValues({"includeEnsemble":true,"usage":["DEFINING"]})`];
     const msrp = convertCurrencyStringToNumber(item.strikeThroughPrice)
     const promotionalText = promotionRef ? jsonObject.pageProps["__APOLLO_STATE__"][promotionRef].shortDescription : ""
+    const ATTRIBUTE_SIZE = "Attribute:400"
+    const ATTRIBUTE_COLOR = "Attribute:399"
+    const ATTRIBUTE_FLAVOR = "Attribute:777"
     return {
         productName: item.name,
         price: convertCurrencyStringToNumber(item.advertisedPrice),
-        // savePrice: convertCurrencyStringToNumber(item.strikeThroughSavings),
         currency: "USD",
         inStock: item.inStock,
-        maxQuantity: item.maxQuantity,
         categoryLevel: getBreadCum(product.breadcrumbs, jsonObject).join(" / "),
         brand: product.manufacturerName,
-        shipping: item.advertisedPrice >= 49 ? 0 : 4.95,
+        shippingPrice: 0,
         productCode: jsonObject.pageProps.pageData.pageId,
         gtin: item.gtin ? `00${item.gtin}` : null,
         imageUrl: item.images[0][`url({"autoCrop":true,"square":108})`],
-        metadata: {
-            generic_name: getMetadataValue(item.descriptionAttributes, "Generic Name"),
-            product_form: getMetadataValue(item.descriptionAttributes, "Product Form"),
-            drug_type: getMetadataValue(item.descriptionAttributes, "Drug Type"),
-            prescription_item: item?.isPrescriptionItem ? "yes" : "no",
-            autoshipPrice: item?.autoshipPrice ? convertCurrencyStringToNumber(item.autoshipPrice) : null,
-            shipping_info: item.shippingMessage ? removeMd(item.shippingMessage) : null,
-            product_description: item.description ? removeMd(item?.description) : null,
-            promotionalText: promotionalText,
-            promotional_information: promotional_information,
-            pack_size: getSizeAttributes(attributes),
-            msrp: msrp,
-            per_unit_price: item?.perUnitPrice ? convertCurrencyStringToNumber(item.perUnitPrice) : null,
-            unit_of_measure: item?.unitOfMeasure ?? null,
-            item_number: jsonObject.pageProps.pageData.pageId,
-            weight: item.weight,
-            made_in: getMetadataValue(item.descriptionAttributes, "Made In"),
-            package_type: getMetadataValue(item.descriptionAttributes, "Package Type"),
-            season: getMetadataValue(item.descriptionAttributes, "Season"),
-            sourced_from: getMetadataValue(item.descriptionAttributes, "Sourced From"),
-            food_texture: getMetadataValue(item.descriptionAttributes, "Food Texture"),
-            lifestage: getMetadataValue(item.descriptionAttributes, "Lifestage"),
-            breed_size: getMetadataValue(item.descriptionAttributes, "Breed Size"),
-            food_form: getMetadataValue(item.descriptionAttributes, "Food Form"),
-            special_diet: getMetadataValue(item.descriptionAttributes, "Special Diet")
-        }
+        maxQuantity: item.maxQuantity,
+        product_url: url,
+        generic_name: getMetadataValue(item.descriptionAttributes, "Generic Name"),
+        product_form: getMetadataValue(item.descriptionAttributes, "Product Form"),
+        drug_type: getMetadataValue(item.descriptionAttributes, "Drug Type"),
+        prescription_item: item?.isPrescriptionItem ? "yes" : "no",
+        is_autoship_option: false,
+        adversited_price: convertCurrencyStringToNumber(item.advertisedPrice),
+        autoship_price: item?.autoshipPrice ? convertCurrencyStringToNumber(item.autoshipPrice) : null,
+        save_price: getExtraSavingPrice(convertCurrencyStringToNumber(item.autoshipPrice), convertCurrencyStringToNumber(item.advertisedPrice)),
+        shipping_info: item.shippingMessage ? item.shippingMessage : null,
+        product_description: item.description ? item?.description : null,
+        promotionalText: promotionalText,
+        promotional_information: promotional_information,
+        pack_size: getSizeAttributes(attributes),
+        msrp: msrp,
+        per_unit_price: item?.perUnitPrice ? convertCurrencyStringToNumber(item.perUnitPrice) : null,
+        unit_of_measure: item?.unitOfMeasure ?? null,
+        item_number: jsonObject.pageProps.pageData.pageId,
+        product_weight: item.weight,
+        origin_product_name: product.name,
+        product_color: getValueByAttributeKey(jsonObject, attributes, ATTRIBUTE_COLOR),
+        product_size: getValueByAttributeKey(jsonObject, attributes, ATTRIBUTE_SIZE),
+        product_flavor: getValueByAttributeKey(jsonObject, attributes, ATTRIBUTE_FLAVOR),
+        made_in: getMetadataValue(item.descriptionAttributes, "Made In"),
+        package_type: getMetadataValue(item.descriptionAttributes, "Package Type"),
+        product_season: getMetadataValue(item.descriptionAttributes, "Season"),
+        sourced_from: getMetadataValue(item.descriptionAttributes, "Sourced From"),
+        food_texture: getMetadataValue(item.descriptionAttributes, "Food Texture"),
+        life_stage: getMetadataValue(item.descriptionAttributes, "Lifestage"),
+        breed_size: getMetadataValue(item.descriptionAttributes, "Breed Size"),
+        food_form: getMetadataValue(item.descriptionAttributes, "Food Form"),
+        special_diet: getMetadataValue(item.descriptionAttributes, "Special Diet")
     };
 }
+
+function getExtraSavingPrice(autoshipPrice, price) {
+    if (!autoshipPrice) return null;
+    return parseFloat((price - autoshipPrice).toFixed(2));
+}
+
+function getValueByAttributeKey(jsonObj, attributes, AttributeKey) {
+    // const ATTRIBUTE_SIZE = "Attribute:400"
+    for (let i = 0; i < attributes.length; i++) {
+        const attribute = attributes[i]["__ref"];
+        if (jsonObj?.pageProps["__APOLLO_STATE__"]?.[attribute]?.["attribute"]?.["__ref"] === AttributeKey) {
+            return JSON.parse(attribute.split("AttributeValue:")[1]).value;
+        }
+    }
+    return null;
+}
+
+function getRelevanceEntriesId(itemId, jsonObject) {
+    const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
+    const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
+    const productRef = item.product["__ref"]
+    return jsonObject?.pageProps["__APOLLO_STATE__"][productRef][`items({"includeEnsemble":true})`]?.map((itemRef) => {
+        return jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef["__ref"]].entryID;
+    }).filter((entryId) => (entryId !== undefined && entryId !== ("" + itemId))) ?? [];
+}
+
 
 function getSizeAttributes(attributes) {
     if (attributes.length === 0) return null;
@@ -146,11 +132,17 @@ function getBreadCum(breadcums, jsonObject) {
     return breadcumObjects.map((crumb) => crumb.name);
 }
 
+const promotional_information = `
+*New Customers Offer Terms and Conditions
+Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must be logged into account to view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: https://chewy.com/app/content/gift-cards-terms. Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/15/24 6:29AM ET, while supplies last, subject to Terms.
+`
+const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/product-details-129070.json'), 'utf-8');
 
-const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/product-details-35512.json'), 'utf-8');
+// const products = extractProductDetails("129070", jsonObject, promotional_information, "-");
 
-extractProductDetails("35512", jsonObject, "Promotional Information");
+console.log(getRelevanceEntriesId(129070, jsonObject))
 
+// console.log(products)
 
 
 
