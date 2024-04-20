@@ -1,14 +1,13 @@
-import fs from 'fs';
 
 function convertCurrencyStringToNumber(currencyString) {
     if (!currencyString) return 0;
     return parseFloat(currencyString.replace("$", ""))
 }
 
-export default function extractProductDetails(itemId, jsonObject, promotional_information = "") {
+export default function extractProductDetails(itemId, jsonObject, promotional_information = "", url) {
     const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
     const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
-    const product = getNonAutoShipProduct(item, jsonObject, promotional_information);
+    const product = getNonAutoShipProduct(item, jsonObject, promotional_information, url);
     if (!item.isAutoshipAllowed) {
         product.shippingPrice = product.price >= 49 ? 0 : 4.95;
         return [product];
@@ -18,12 +17,13 @@ export default function extractProductDetails(itemId, jsonObject, promotional_in
     autoshipProduct.productName = `${product.productName} - Autosent`;
     autoshipProduct.price = convertCurrencyStringToNumber(item.autoshipPrice);
     product.shippingPrice = autoshipProduct.price >= 49 ? 0 : 4.95;
+    autoshipProduct.is_available = autoshipProduct.price !== 0 ? true : false;
     autoshipProduct.is_autoship_option = true;
     return [product, autoshipProduct];
 }
 
 function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="") {
-    const promotionRef = item.topPromotion["__ref"];
+    const promotionRef = item?.topPromotion?.["__ref"] ?? null;
     const productRef = item.product["__ref"];
     const product = jsonObject?.pageProps["__APOLLO_STATE__"]?.[productRef];
     const attributes = item[`attributeValues({"includeEnsemble":true,"usage":["DEFINING"]})`];
@@ -32,9 +32,10 @@ function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="
     const ATTRIBUTE_SIZE = "Attribute:400"
     const ATTRIBUTE_COLOR = "Attribute:399"
     const ATTRIBUTE_FLAVOR = "Attribute:777"
+    const price = convertCurrencyStringToNumber(item.advertisedPrice)
     return {
         productName: item.name,
-        price: convertCurrencyStringToNumber(item.advertisedPrice),
+        price: price,
         currency: "USD",
         inStock: item.inStock,
         categoryLevel: getBreadCum(product.breadcrumbs, jsonObject).join(" / "),
@@ -75,7 +76,8 @@ function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="
         life_stage: getMetadataValue(item.descriptionAttributes, "Lifestage"),
         breed_size: getMetadataValue(item.descriptionAttributes, "Breed Size"),
         food_form: getMetadataValue(item.descriptionAttributes, "Food Form"),
-        special_diet: getMetadataValue(item.descriptionAttributes, "Special Diet")
+        special_diet: getMetadataValue(item.descriptionAttributes, "Special Diet"),
+        is_available: price !== 0 ? true : false
     };
 }
 
@@ -94,16 +96,6 @@ function getValueByAttributeKey(jsonObj, attributes, AttributeKey) {
     }
     return null;
 }
-
-function getRelevanceEntriesId(itemId, jsonObject) {
-    const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
-    const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
-    const productRef = item.product["__ref"]
-    return jsonObject?.pageProps["__APOLLO_STATE__"][productRef][`items({"includeEnsemble":true})`]?.map((itemRef) => {
-        return jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef["__ref"]].entryID;
-    }).filter((entryId) => (entryId !== undefined && entryId !== ("" + itemId))) ?? [];
-}
-
 
 function getSizeAttributes(attributes) {
     if (attributes.length === 0) return null;
@@ -132,15 +124,15 @@ function getBreadCum(breadcums, jsonObject) {
     return breadcumObjects.map((crumb) => crumb.name);
 }
 
-const promotional_information = `
-*New Customers Offer Terms and Conditions
-Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must be logged into account to view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: https://chewy.com/app/content/gift-cards-terms. Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/15/24 6:29AM ET, while supplies last, subject to Terms.
-`
-const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/product-details-129070.json'), 'utf-8');
+// const promotional_information = `
+// *New Customers Offer Terms and Conditions
+// Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must be logged into account to view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: https://chewy.com/app/content/gift-cards-terms. Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/15/24 6:29AM ET, while supplies last, subject to Terms.
+// `
+// const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/product-details-129810.json'), 'utf-8');
 
-// const products = extractProductDetails("129070", jsonObject, promotional_information, "-");
+// const products = extractProductDetails("129810", jsonObject, promotional_information);
 
-console.log(getRelevanceEntriesId(129070, jsonObject))
+// // console.log(getRelevanceEntriesId(129810, jsonObject))
 
 // console.log(products)
 
