@@ -24,17 +24,19 @@ async function fetchProducts(categoryUrl, maxPage) {
         const allProducts = [];
         for (let page = 1; page <= MAX_PAGES; page++) {
             console.log(`Fetching page ${page}...`)
-            const nextProducts = (1 - page) * PRODUCTS_PER_PAGE;
-            const response = await fetch(`https://www.chewy.com/plp/api/search?groupResults=true&count=36&include=items&fields%5B0%5D=PRODUCT_CARD_DETAILS&omitNullEntries=true&catalogId=1004&from=${nextProducts}&sort=byRelevance&groupId=${categoryId}`, {
+            const fromProducts = (page - 1) * PRODUCTS_PER_PAGE;
+            const response = await fetch(`https://www.chewy.com/plp/api/search?groupResults=true&count=36&include=items&fields%5B0%5D=PRODUCT_CARD_DETAILS&omitNullEntries=true&catalogId=1004&from=${fromProducts}&sort=byRelevance&groupId=${categoryId}`, {
                 headers
             });
             const jsonObject = await response.json();
             const products = extractProducts(jsonObject);
-
-            if (products.length === 0 || products.length < PRODUCTS_PER_PAGE) {
+            if (products.length === 0) {
                 break;
             }
             allProducts.push(...products);
+            if (products.length < PRODUCTS_PER_PAGE) {
+                break;
+            }
             await new Promise(resolve => setTimeout(resolve, Math.random() * 300 + 200));
         }
         return allProducts;
@@ -50,7 +52,7 @@ async function fetchProducts(categoryUrl, maxPage) {
 // const url = "https://www.chewy.com/b/dry-food-388"
 
 export async function getProductList(categoryUrl) {
-    return await fetchProducts(categoryUrl)
+    return await fetchProducts(categoryUrl, 2)
 }
 
 

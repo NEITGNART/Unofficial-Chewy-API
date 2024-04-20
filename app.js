@@ -1,34 +1,33 @@
+import fs from "fs";
+import { promotional_information } from "./MyConstant.js";
+import {
+    saveProductDetails,
+    saveProductList
+} from "./Utils.js";
+import fetchProductDetails, { extractIdFromProductUrl } from "./fetching-product-details.js";
 import { getCategoryId, getProductList } from "./fetching-product-list.js";
 
 
-function getFilePath(categoryId, categoryName, FOLDER = "Data/ProductList") {
-    return `${FOLDER}/${categoryId}-${categoryName.replaceAll(" ", "")}-products-${new Date().toLocaleDateString("en-US").replaceAll("/", "-")}.json`
-}
+// read categories from file
 
-function saveProductList(products, categoryId, categoryName) {
-    const path = getFilePath(categoryId, categoryName);
-    fs.writeFileSync(path, JSON.stringify(products, null, 2));
-}
-
-
-const categories = [
-    {
-        url: "https://www.chewy.com/b/dry-food-388",
-        name: "Dry Food",
-    }
-]
-
+const categories = JSON.parse(fs.readFileSync("chewy-categories.json", "utf8"));
+// console.log(categories.length)
+console.time("Fetching products")
 for (const category of categories) {
     // Fetching product list
+    console.log("Fetching product list for", category)
     const products = await getProductList(category.url);
     const categoryId = getCategoryId(category.url);
-    const categoryName = category.name;
-    saveProductList(products, categoryId, categoryName);
-    // From the product list, we can extract the product details
-    // and save them to a file
-    // for (const product of products) {
-    // }
-
+    saveProductList(products, category, categoryId);
+    console.log("Done fetching product list for", category)
+    // Start fetching product details
+    console.log("Fetching product details for", category)
+    for (const product of products) {
+        const productDetails = await fetchProductDetails(product.url, promotional_information)
+        const productDetailsId = extractIdFromProductUrl(product.url);
+        saveProductDetails(productDetails, productDetailsId, category)
+    }
 }
+console.timeEnd("Fetching products")
 
 

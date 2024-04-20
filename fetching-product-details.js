@@ -22,7 +22,7 @@ function extractPathFromUrl(fullUrl) {
     return path;
 }
 
-function extractIdFromUrl(url) {
+export function extractIdFromProductUrl(url) {
     const idRegex = /\/dp\/(\d+)/;
     const match = url.match(idRegex);
     if (match && match[1]) {
@@ -43,7 +43,7 @@ function getRelevanceEntriesId(itemId, jsonObject) {
 }
 
 
-async function fetchProductDetails(url, promotional_information) {
+export default async function fetchProductDetails(url, promotional_information) {
 
     const MAX_RETRIES = 3;
     const RETRY_DELAY = 5000;
@@ -52,7 +52,7 @@ async function fetchProductDetails(url, promotional_information) {
         try {
             const allProducts = []
             const productPath = extractPathFromUrl(url);
-            const id = extractIdFromUrl(url);
+            const id = extractIdFromProductUrl(url);
             const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${id}.json`;
             const response = await fetch(api, {
                 headers
@@ -63,21 +63,19 @@ async function fetchProductDetails(url, promotional_information) {
             await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
             const entriesId = getRelevanceEntriesId(id, jsonObject);
             for (let i = 0; i < entriesId.length; i++) {
+                console.log(`Fetching entry ${i + 1} of ${entriesId.length}...`);
                 const entryId = entriesId[i];
                 const entryApi = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${entryId}.json`;
-                console.log(entryApi)
                 const entryResponse = await fetch(entryApi, {
                     headers
                 });
                 const entryJsonObject = await entryResponse.json();
                 const entryProducts = extractProductDetails(entryId, entryJsonObject, promotional_information, `https://www.chewy.com/${productPath}${entryId}`);
                 allProducts.push(...entryProducts);
-                // await 300 ms before fetching the next entry 
                 // add random delay to avoid being blocked
                 await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
             }
-            fs.writeFileSync(`Data/Product-Details/product-details-${id}-${new Date().toLocaleDateString("en-US").replaceAll("/", "-") }.json`, JSON.stringify(allProducts, null, 2));
-            break;
+            return allProducts; 
         } catch (error) {
             console.error(`Attempt ${attempt + 1} failed: ${error}`);
             await getLastedProductApi().then((newResourceId) => {
