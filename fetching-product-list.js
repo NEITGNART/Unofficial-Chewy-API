@@ -1,22 +1,8 @@
-import fs from 'fs';
 import fetch from 'node-fetch';
+import { headers } from './MyConstant.js';
 import extractProducts from './extract-products.js';
 
-const headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:124.0) Gecko/20100101 Firefox/124.0',
-    'Accept': 'application/json, text/plain, */*',
-    'Accept-Language': 'en-US,en;q=0.5',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'DNT': '1',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    'Sec-GPC': '1',
-    'Connection': 'keep-alive',
-    'TE': 'trailers'
-}
-
-function getCategoryId(url) {
+export function getCategoryId(url) {
     // Updated regex to capture digits following either _c or directly after - that comes after /b/
     const categoryIdRegex = /\/b\/.*?(?:_c|-)(\d+)/;
     const match = url.match(categoryIdRegex);
@@ -29,10 +15,10 @@ function getCategoryId(url) {
     }
 }
 
-async function fetchProducts(url) {
+async function fetchProducts(categoryUrl, maxPage) {
     try {
-        const categoryId = getCategoryId(url);
-        const MAX_PAGES = 5 || 278;
+        const categoryId = getCategoryId(categoryUrl);
+        const MAX_PAGES = maxPage || 278;
         const PRODUCTS_PER_PAGE = 36;
 
         const allProducts = [];
@@ -49,6 +35,7 @@ async function fetchProducts(url) {
                 break;
             }
             allProducts.push(...products);
+            await new Promise(resolve => setTimeout(resolve, Math.random() * 300 + 200));
         }
         return allProducts;
     } catch (error) {
@@ -60,15 +47,11 @@ async function fetchProducts(url) {
 
 // await fetchProducts("https://www.chewy.com/b/dog-288");
 
-const url = "https://www.chewy.com/b/dry-food-388"
-await fetchProducts(url).then(products => {
-    const categoryId = getCategoryId(url);
-    fs.writeFileSync(`Data/${categoryId}-products-${new Date().toLocaleDateString("en-US").replaceAll("/", "-")}.json`, JSON.stringify(products, null, 2));
-});
+// const url = "https://www.chewy.com/b/dry-food-388"
 
-
-
-
+export async function getProductList(categoryUrl) {
+    return await fetchProducts(categoryUrl)
+}
 
 
 

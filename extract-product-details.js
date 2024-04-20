@@ -4,6 +4,21 @@ function convertCurrencyStringToNumber(currencyString) {
     return parseFloat(currencyString.replace("$", ""))
 }
 
+function getAutoShipPrice(item, jsonObject, currentPrice) {
+    const topPromotionRef = item?.['topHeadlinePromotion']?.["__ref"] ?? null;
+    if (!topPromotionRef) return currentPrice;
+    // const topPromotion = jsonObject.pageProps["__APOLLO_STATE__"][topPromotionRef];
+    const featureToggles = jsonObject?.pageProps?.["__APOLLO_STATE__"]?.['ROOT_QUERY']?.['pdp']?.['featureToggles'] ?? null;
+    if (!featureToggles) return currentPrice;
+    const maxSavingDiscount = parseInt(featureToggles['autoshipFirstTimeDiscountMaxSavings']);
+    const firstTimeDiscount = parseInt(featureToggles['autoshipFirstTimeDiscountPercent']);
+
+    if (currentPrice * (firstTimeDiscount / 100) >= maxSavingDiscount) {
+        return currentPrice - maxSavingDiscount;
+    }
+    return currentPrice - (currentPrice * (firstTimeDiscount / 100));
+}
+
 export default function extractProductDetails(itemId, jsonObject, promotional_information = "", url) {
     const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
     const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
@@ -15,7 +30,12 @@ export default function extractProductDetails(itemId, jsonObject, promotional_in
     // clone product and update autoship price
     const autoshipProduct = JSON.parse(JSON.stringify(product));
     autoshipProduct.productName = `${product.productName} - Autosent`;
-    autoshipProduct.price = convertCurrencyStringToNumber(item.autoshipPrice);
+
+    if (item['topHeadlinePromotion'] !== null) {
+        autoshipProduct.price = parseFloat(getAutoShipPrice(item, jsonObject, product.price).toFixed(2));
+    } else {
+        autoshipProduct.price = parseFloat(convertCurrencyStringToNumber(item.autoshipPrice).toFixed(2));
+    }
     product.shippingPrice = autoshipProduct.price >= 49 ? 0 : 4.95;
     autoshipProduct.is_available = autoshipProduct.price !== 0 ? true : false;
     autoshipProduct.is_autoship_option = true;
@@ -128,11 +148,11 @@ function getBreadCum(breadcums, jsonObject) {
 // *New Customers Offer Terms and Conditions
 // Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must be logged into account to view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: https://chewy.com/app/content/gift-cards-terms. Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/15/24 6:29AM ET, while supplies last, subject to Terms.
 // `
-// const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/product-details-129810.json'), 'utf-8');
 
-// const products = extractProductDetails("129810", jsonObject, promotional_information);
+// import fs from "fs";
+// const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/raw-data-123726.json'), 'utf-8');
 
-// // console.log(getRelevanceEntriesId(129810, jsonObject))
+// const products = extractProductDetails("123726", jsonObject, promotional_information);
 
 // console.log(products)
 

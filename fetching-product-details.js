@@ -1,26 +1,9 @@
 import fs from "fs";
 import fetch from "node-fetch";
+import { headers } from "./MyConstant.js";
 import extractProductDetails from "./extract-product-details.js";
+import getLastedProductApi from "./getLastedProductDetailsApi.js";
 
-const headers = {
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:124.0) Gecko/20100101 Firefox/124.0',
-    'Accept': '*/*',
-    'Accept-Language': 'en-US,en;q=0.5',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'x-nextjs-data': '1',
-    'DNT': '1',
-    'Sec-Fetch-Dest': 'empty',
-    'Sec-Fetch-Mode': 'cors',
-    'Sec-Fetch-Site': 'same-origin',
-    'Sec-GPC': '1',
-    'Connection': 'keep-alive',
-    'TE': 'trailers'
-}
-
-const promotional_information = `
-*New Customers Offer Terms and Conditions
-Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must be logged into account to view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: https://chewy.com/app/content/gift-cards-terms. Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/15/24 6:29AM ET, while supplies last, subject to Terms.
-`
 
 
 function extractPathFromUrl(fullUrl) {
@@ -62,46 +45,57 @@ function getRelevanceEntriesId(itemId, jsonObject) {
 
 async function fetchProductDetails(url, promotional_information) {
 
-    const allProducts = []
-    const productPath = extractPathFromUrl(url);
-    const id = extractIdFromUrl(url);
-    const resourceId = 'RHOCOHq4YoiX'
-    const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${id}.json`;
-    const response = await fetch(api, {
-        headers
-    });
-    const jsonObject = await response.json();
-    const products = extractProductDetails(id, jsonObject, promotional_information);
-    allProducts.push(...products);
-
-    await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
-
-    const entriesId = getRelevanceEntriesId(id, jsonObject);
-    for (let i = 0; i < entriesId.length; i++) {
-        const entryId = entriesId[i];
-        // if (entryId.length >= 10) {
-        //     console.log("Fetching + ", entryId)
-        //     break;
-        // }
-        const entryApi = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${entryId}.json`;
-        console.log(entryApi)
-        const entryResponse = await fetch(entryApi, {
-            headers
-        });
-        const entryJsonObject = await entryResponse.json();
-        const entryProducts = extractProductDetails(entryId, entryJsonObject, promotional_information, `https://www.chewy.com/${productPath}${entryId}`);
-        allProducts.push(...entryProducts);
-        // await 300 ms before fetching the next entry 
-        // add random delay to avoid being blocked
-        await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY = 5000;
+    let resourceId = fs.readFileSync("resource.txt", "utf-8");
+    for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+        try {
+            const allProducts = []
+            const productPath = extractPathFromUrl(url);
+            const id = extractIdFromUrl(url);
+            const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${id}.json`;
+            const response = await fetch(api, {
+                headers
+            });
+            const jsonObject = await response.json();
+            const products = extractProductDetails(id, jsonObject, promotional_information);
+            allProducts.push(...products);
+            await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
+            const entriesId = getRelevanceEntriesId(id, jsonObject);
+            for (let i = 0; i < entriesId.length; i++) {
+                const entryId = entriesId[i];
+                const entryApi = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${entryId}.json`;
+                console.log(entryApi)
+                const entryResponse = await fetch(entryApi, {
+                    headers
+                });
+                const entryJsonObject = await entryResponse.json();
+                const entryProducts = extractProductDetails(entryId, entryJsonObject, promotional_information, `https://www.chewy.com/${productPath}${entryId}`);
+                allProducts.push(...entryProducts);
+                // await 300 ms before fetching the next entry 
+                // add random delay to avoid being blocked
+                await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
+            }
+            fs.writeFileSync(`Data/Product-Details/product-details-${id}-${new Date().toLocaleDateString("en-US").replaceAll("/", "-") }.json`, JSON.stringify(allProducts, null, 2));
+            break;
+        } catch (error) {
+            console.error(`Attempt ${attempt + 1} failed: ${error}`);
+            await getLastedProductApi().then((newResourceId) => {
+                resourceId = newResourceId;
+                fs.writeFileSync("resource.txt", newResourceId);
+                console.log(`New resource id: ${newResourceId}`);
+            }).catch((error) => {
+                console.error(`Failed to fetch resource id: ${error}`);
+            });
+            await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
+        }
     }
-    fs.writeFileSync(`product-details-${id}.json`, JSON.stringify(allProducts, null, 2));
+
 }
-console.time("fetchProductDetails");
-await fetchProductDetails("https://www.chewy.com/purina-pro-plan-high-protein-shredded/dp/52445", promotional_information)
-console.timeEnd("fetchProductDetails");
 
+// console.time("fetchProductDetails");
+// await fetchProductDetails("https://www.chewy.com/purina-pro-plan-high-protein-shredded/dp/52445", promotional_information)
+// console.timeEnd("fetchProductDetails");
+// // const productPath = extractPathFromUrl("");
 
-// const productPath = extractPathFromUrl("");
-
-// console.log(productPath)
+// // console.log(productPath)
