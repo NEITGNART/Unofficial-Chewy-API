@@ -4,7 +4,7 @@ function convertCurrencyStringToNumber(currencyString) {
     return parseFloat(currencyString.replace("$", ""))
 }
 
-function getAutoShipPrice(item, jsonObject, currentPrice) {
+function getAutoShipPriceDiscount(item, jsonObject, currentPrice) {
     const topPromotionRef = item?.['topHeadlinePromotion']?.["__ref"] ?? null;
     if (!topPromotionRef) return currentPrice;
     // const topPromotion = jsonObject.pageProps["__APOLLO_STATE__"][topPromotionRef];
@@ -19,6 +19,19 @@ function getAutoShipPrice(item, jsonObject, currentPrice) {
     return currentPrice - (currentPrice * (firstTimeDiscount / 100));
 }
 
+
+function getAutoShipPrice(item, jsonObject, productPrice) {
+    if (item['topHeadlinePromotion'] !== null) {
+        return parseFloat(getAutoShipPriceDiscount(item, jsonObject, productPrice).toFixed(2));
+    }
+
+    if (item.autoshipPrice === null) {
+        return productPrice;
+    }
+
+    return parseFloat(convertCurrencyStringToNumber(item.autoshipPrice).toFixed(2));
+}
+
 export default function extractProductDetails(itemId, jsonObject, promotional_information = "", url) {
     const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
     const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
@@ -29,25 +42,25 @@ export default function extractProductDetails(itemId, jsonObject, promotional_in
     }
     // clone product and update autoship price
     const autoshipProduct = JSON.parse(JSON.stringify(product));
-    autoshipProduct.productName = `${product.productName} - Autosent`;
 
-    if (item['topHeadlinePromotion'] !== null) {
-        autoshipProduct.price = parseFloat(getAutoShipPrice(item, jsonObject, product.price).toFixed(2));
-    } else {
-        autoshipProduct.price = parseFloat(convertCurrencyStringToNumber(item.autoshipPrice).toFixed(2));
-    }
-    product.shippingPrice = autoshipProduct.price >= 49 ? 0 : 4.95;
-    autoshipProduct.is_available = autoshipProduct.price !== 0 ? true : false;
+    autoshipProduct.productName = `${product.productName} - Autosent`;
+    autoshipProduct.price = getAutoShipPrice(item, jsonObject, product.price);
+    autoshipProduct.shippingPrice = autoshipProduct.price >= 49 ? 0 : 4.95;
+    product.shippingPrice = product.price >= 49 ? 0 : 4.95;
     autoshipProduct.is_autoship_option = true;
     return [product, autoshipProduct];
 }
 
-function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="") {
+function getFirstImage(item) {
+    return item?.images[0]?.[`url({"autoCrop":true,"square":108})`];
+}
+
+function getNonAutoShipProduct(item, jsonObject, promotional_information, url = "") {
     const promotionRef = item?.topPromotion?.["__ref"] ?? null;
     const productRef = item.product["__ref"];
     const product = jsonObject?.pageProps["__APOLLO_STATE__"]?.[productRef];
     const attributes = item[`attributeValues({"includeEnsemble":true,"usage":["DEFINING"]})`];
-    const msrp = convertCurrencyStringToNumber(item.strikeThroughPrice)
+    const msrp = item?.strikeThroughPrice ? convertCurrencyStringToNumber(item.strikeThroughPrice) : null;
     const promotionalText = promotionRef ? jsonObject.pageProps["__APOLLO_STATE__"][promotionRef].shortDescription : ""
     const ATTRIBUTE_SIZE = "Attribute:400"
     const ATTRIBUTE_COLOR = "Attribute:399"
@@ -61,9 +74,9 @@ function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="
         categoryLevel: getBreadCum(product.breadcrumbs, jsonObject).join(" / "),
         brand: product.manufacturerName,
         shippingPrice: 0,
-        productCode: jsonObject.pageProps.pageData.pageId,
-        gtin: item.gtin ? `00${item.gtin}` : null,
-        imageUrl: item.images[0][`url({"autoCrop":true,"square":108})`],
+        productCode: item?.entryID ?? null,
+        gtin: item?.gtin ? `00${item.gtin.replaceAll("-","")}` : null,
+        imageUrl: getFirstImage(item) ?? null,
         maxQuantity: item.maxQuantity,
         product_url: url,
         generic_name: getMetadataValue(item.descriptionAttributes, "Generic Name"),
@@ -97,7 +110,8 @@ function getNonAutoShipProduct(item, jsonObject, promotional_information, url ="
         breed_size: getMetadataValue(item.descriptionAttributes, "Breed Size"),
         food_form: getMetadataValue(item.descriptionAttributes, "Food Form"),
         special_diet: getMetadataValue(item.descriptionAttributes, "Special Diet"),
-        is_available: price !== 0 ? true : false
+        is_available: !item.isUnavailable,
+        update_time: new Date().toLocaleDateString("en-US")
     };
 }
 
@@ -143,24 +157,3 @@ function getBreadCum(breadcums, jsonObject) {
     const breadcumObjects = breadcumRefs.map((ref) => jsonObject?.pageProps["__APOLLO_STATE__"]?.[ref]);
     return breadcumObjects.map((crumb) => crumb.name);
 }
-
-// const promotional_information = `
-// *New Customers Offer Terms and Conditions
-// Offer valid for new Chewy customers only. Must add $49.00 worth of eligible items to cart and enter code WELCOME to receive $20 e-Gift card. Limit 1 use per order, limit 1 order per customer. Free e-Gift card added at checkout with qualifying purchase and automatically added to your Chewy account after your order ships. Customer must be logged into account to view all applicable promotions. Excludes, gift cards, Purina Pro Plan, Diamond, Taste of the Wild, Castor & Pollux, and Vet Diet brands as well as select Beggin', DentaLife, Dog Chow, Fancy Feast, Friskies, Purina Beneful, Purina Beyond, Purina ONE, Tidy Cats, Tidy Max, and other select items. Subject to Chewy Gift Card terms and conditions found here: https://chewy.com/app/content/gift-cards-terms. Gift cards cannot be returned, refunded, or redeemed for cash as required by law. Valid through 4/15/24 6:29AM ET, while supplies last, subject to Terms.
-// `
-
-// import fs from "fs";
-// const jsonObject = JSON.parse(fs.readFileSync('/Users/lucky/projects/chewy/raw-data-123726.json'), 'utf-8');
-
-// const products = extractProductDetails("123726", jsonObject, promotional_information);
-
-// console.log(products)
-
-
-
-// const jsonObject = JSON.parse(fs.readFileSync('cat-products.json'));
-
-// const products = extractProducts(jsonObject);
-
-// fs.writeFileSync('cat-products-cleaned.json', JSON.stringify(products, null, 2));
-

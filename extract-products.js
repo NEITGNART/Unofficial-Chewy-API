@@ -17,10 +17,3 @@ export default function extractProducts(jsonObject) {
     });
     return products;
 }
-
-// const jsonObject = JSON.parse(fs.readFileSync('cat-products.json'));
-
-// const products = extractProducts(jsonObject);
-
-// fs.writeFileSync('cat-products-cleaned.json', JSON.stringify(products, null, 2));
-

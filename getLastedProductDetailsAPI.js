@@ -3,7 +3,7 @@ import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
 puppeteer.use(StealthPlugin());
 
-export default async function ConstantgetLastedProductApi() {
+export default async function getLastedProductApi() {
     // Launch the browser with Puppeteer
     const browser = await puppeteer.launch({
         headless: true,
@@ -43,8 +43,24 @@ export default async function ConstantgetLastedProductApi() {
     // Define a regular expression to match the pattern
     const regex = /chewy-pdp-ui-(.*?)(?=\/en-)/;
     const match = apiUrl.match(regex);
+    // get the cookie 
+    // const cookie = await page.cookies();
+    // const validSameSiteValues = ['lax', 'strict', 'no_restriction', 'unspecified'];
+
+    // const finalCookies = cookies.map(cookie => {
+    //     if (!cookie.sameSite || !validSameSiteValues.includes(cookie.sameSite)) {
+    //         // Set to 'no_restriction' if sameSite is invalid or missing
+    //         cookie.sameSite = 'no_restriction';
+    //     }
+    //     return cookie;
+    // });
+    // let cookieHeader = null;
+    // if (finalCookies && Array.isArray(finalCookies)) {
+    //     const cookies = finalCookies.map(cookie => `${cookie.name}=${cookie.value}`);
+    //     cookieHeader = cookies.join('; ');
+    // }
     if (match) {
-        return match[1];
+        return {resourceId: match[1]};
     } else {
         throw new Error('API URL not found');
     }

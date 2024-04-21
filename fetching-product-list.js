@@ -45,14 +45,9 @@ async function fetchProducts(categoryUrl, maxPage) {
     }
 }
 
-// console.log(getCategoryId("https://www.chewy.com/b/dry-food-388"));
-
-// await fetchProducts("https://www.chewy.com/b/dog-288");
-
-// const url = "https://www.chewy.com/b/dry-food-388"
 
 export async function getProductList(categoryUrl) {
-    return await fetchProducts(categoryUrl, 2)
+    return await fetchProducts(categoryUrl)
 }
 
 

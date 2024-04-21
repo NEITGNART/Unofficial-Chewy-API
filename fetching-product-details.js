@@ -2,9 +2,7 @@ import fs from "fs";
 import fetch from "node-fetch";
 import { headers } from "./MyConstant.js";
 import extractProductDetails from "./extract-product-details.js";
-import getLastedProductApi from "./getLastedProductDetailsApi.js";
-
-
+import getLastedProductApi from "./getLastedProductDetailsAPI.js";
 
 function extractPathFromUrl(fullUrl) {
     const baseUrl = "https://www.chewy.com/";
@@ -33,67 +31,71 @@ export function extractIdFromProductUrl(url) {
 }
 
 
-function getRelevanceEntriesId(itemId, jsonObject) {
+function getRelevanceEntriesId(itemId, jsonObject, isIncludeHiddenProduct) {
     const itemRef = jsonObject?.pageProps["__APOLLO_STATE__"]?.["ROOT_QUERY"]?.[`item({"id":"${itemId}"})`]?.["__ref"]
     const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef];
     const productRef = item.product["__ref"]
-    return jsonObject?.pageProps["__APOLLO_STATE__"][productRef][`items({"includeEnsemble":true})`]?.map((itemRef) => {
-        return jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef["__ref"]].entryID;
-    }).filter((entryId) => (entryId !== undefined && entryId !== ("" + itemId))) ?? [];
+    return jsonObject?.pageProps["__APOLLO_STATE__"][productRef][`items({"includeEnsemble":true})`]?.filter((itemRef) => {
+        if (isIncludeHiddenProduct) {
+            return true;
+        }
+        const item = jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef["__ref"]];
+        return item.isPublished;
+    }).map((itemRef) => {
+        return jsonObject?.pageProps["__APOLLO_STATE__"]?.[itemRef["__ref"]].entryID
+    })
+        .filter((entryId) => (entryId !== undefined && entryId !== ("" + itemId))) ?? [];
 }
 
 
-export default async function fetchProductDetails(url, promotional_information) {
+export default async function getProductDetails(url, promotional_information, isIncludeHiddenProduct = false) {
 
-    const MAX_RETRIES = 3;
+    const MAX_RETRIES = 10;
     const RETRY_DELAY = 5000;
     let resourceId = fs.readFileSync("resource.txt", "utf-8");
+
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
         try {
             const allProducts = []
             const productPath = extractPathFromUrl(url);
             const id = extractIdFromProductUrl(url);
-            const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${id}.json`;
-            const response = await fetch(api, {
-                headers
-            });
-            const jsonObject = await response.json();
-            const products = extractProductDetails(id, jsonObject, promotional_information);
-            allProducts.push(...products);
+            const jsonObject = await fetchProductDetails(resourceId, productPath, id);
+            // const products = extractProductDetails(id, jsonObject, promotional_information); 
+            // allProducts.push(...products);
             await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
-            const entriesId = getRelevanceEntriesId(id, jsonObject);
+            const entriesId = getRelevanceEntriesId(id, jsonObject, isIncludeHiddenProduct);
             for (let i = 0; i < entriesId.length; i++) {
-                console.log(`Fetching entry ${i + 1} of ${entriesId.length}...`);
+                console.log(`Fetching details for product ${i + 1} out of ${entriesId.length} total products...`);
                 const entryId = entriesId[i];
-                const entryApi = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${entryId}.json`;
-                const entryResponse = await fetch(entryApi, {
-                    headers
-                });
-                const entryJsonObject = await entryResponse.json();
+                const entryJsonObject = await fetchProductDetails(resourceId, productPath, entryId)
                 const entryProducts = extractProductDetails(entryId, entryJsonObject, promotional_information, `https://www.chewy.com/${productPath}${entryId}`);
                 allProducts.push(...entryProducts);
                 // add random delay to avoid being blocked
                 await new Promise((resolve) => setTimeout(resolve, (Math.random() * 300) + 500));
             }
-            return allProducts; 
+            return allProducts;
         } catch (error) {
+            console.log("Retrying...", url)
             console.error(`Attempt ${attempt + 1} failed: ${error}`);
-            await getLastedProductApi().then((newResourceId) => {
-                resourceId = newResourceId;
-                fs.writeFileSync("resource.txt", newResourceId);
-                console.log(`New resource id: ${newResourceId}`);
-            }).catch((error) => {
-                console.error(`Failed to fetch resource id: ${error}`);
-            });
+            if (error.message.includes("is not valid JSON")) {
+                await getLastedProductApi().then((data) => {
+                    resourceId = data.resourceId;
+                    fs.writeFileSync("resource.txt", resourceId);
+                }).catch((error) => {
+                    console.error(`Failed to fetch resource id: ${error}`);
+                });
+            }
             await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
         }
     }
-
+    return [];
+}
+async function fetchProductDetails(resourceId, productPath, id) {
+    const api = `https://www.chewy.com/_next/data/chewy-pdp-ui-${resourceId}/en-US/${productPath}${id}.json`;
+    const response = await fetch(api, {
+        headers
+    });
+    const jsonObject = await response.json();
+    return jsonObject;
 }
 
-// console.time("fetchProductDetails");
-// await fetchProductDetails("https://www.chewy.com/purina-pro-plan-high-protein-shredded/dp/52445", promotional_information)
-// console.timeEnd("fetchProductDetails");
-// // const productPath = extractPathFromUrl("");
-
-// // console.log(productPath)
